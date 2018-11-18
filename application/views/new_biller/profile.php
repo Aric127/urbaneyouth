@@ -1,4 +1,4 @@
-
+<?php $this->load->view('alert'); ?>
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">

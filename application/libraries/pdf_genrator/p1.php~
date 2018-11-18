@@ -1,0 +1,144 @@
+<?php
+
+
+$html = '
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OyaCharge</title>
+</head>
+<body>
+<table style="width:100%; font-size:12px; max-width:600px; margin:0 auto;background-color:#80d6cd" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width=""><table width="100%" cellspacing="0" cellpadding="0" align="center">
+          <tbody>
+            <tr>
+              <td colspan="2" style="text-align:center;padding-top:15px;padding-left:20px"><img src="image/logo_header.png" alt="Oyacharge" title="Oyacharge" class="" /></td>
+              <td style="text-align:right; padding-top:20px; padding-right:20px; color:#fff; font-family:Arial, Helvetica, sans-serif;">
+              <h3>Deals receipt</h3>
+              <p style="margin:1px;"><strong>Order no:</strong><br /> # 2158380253
+        2016-10-25T05:59:06.000Z </p>
+              <p style="margin:1px;"><strong>Mob.:</strong> 8982731873</p>
+              <p style="margin:1px;"><strong>Email:</strong> ashwin.sugandhi08@gmail.com</p>
+              </td>
+              
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+    <tr>
+      <td height="10"></td>
+    </tr>
+    <tr>
+      <td height="40"></td>
+    </tr>
+
+    <tr>
+      <td height="20" align="center" style=" border-top:1px dashed #57A9A0;border-bottom:1px dashed #57A9A0; padding:10px;"><p style="font-size:18px;font-family:Arial,Helvetica,sans-serif;color:#fff; margin:0;">Your Deals</p></td>
+    </tr>
+    <tr>
+        <td>
+        	<table cellpadding="0" cellspacing="0">
+            	<tbody>
+                	<tr>
+                    	<td width="60%" style="padding:10px; padding-right:0;"><img width="100%" src="image/cosmetics.jpg" alt="Oyacharge" title="Oyacharge" style=""/></td>
+                        <td width="40%" style="background:#57A9A0; position:relative; padding-left:25px;"><p style="font-size:14px;font-family:Arial,Helvetica,sans-serif;color:#fff;">100% cashback every hour for 7 Lucky Winners
+Coupon <br /><strong style="font-size:18px;">Code : LUCKY7</strong> </p>
+					<div style="position:absolute; margin-left:-65px; top:39%; bottom:auto; background:#57A9A0; width:40px; height:80px;"></div>
+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+      <td style="height:20px; border-bottom:1px dotted #fff;">
+      
+      </td>
+    </tr>
+    <tr>
+      <td height="15"></td>
+    </tr>
+    <tr>
+      <td style="font-size:14px; color:#fff; font-family:Arial, Helvetica, sans-serif; text-align:left; padding:0px 10px;">
+      
+      	<h2 style="padding-left:25px;">How to redeem:</h2>
+        <ol>
+        	<li> Purchase this deal</li>
+            <li>Click on view to see the promo code or check the registered email Id for the promo code</li>
+            <li>Apply the promo code at the time of mobile recharge/bill payment transactions on Paytm to be eligible to win 100% cashback</li>
+        </ol>
+        
+        <h2 style="padding-left:25px;">In detail:</h2>
+        <ol>
+        	<li> Maximum cashback is Rs.150.</li>
+            <li>Click on view to see the promo code or check the registered email Id for the promo code</li>
+            <li>Apply the promo code at the time of mobile recharge/bill payment transactions on Paytm to be eligible to win 100% cashback</li>
+        </ol>
+        
+        <h2 style="padding-left:25px;">Conditions for validity :</h2>
+ 		<p style="padding-left:25px;">Valid till 31st October, 2016</p>
+      </td>
+    </tr>
+  
+    <tr>
+      <td height="15"></td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border-top:2px dotted #fff;"><span class="m_678193774613953679HOEnZb"><font color="#fff"> </font></span><span class="m_678193774613953679HOEnZb"><font color="#fff"> </font></span><span class="m_678193774613953679HOEnZb"><font color="#fff"> </font></span>
+        <table align="center" width="100%">
+          <tbody>
+            <tr>
+              <td style="width:50%;text-align:left;padding-left:15px"><table>
+                  <tbody>
+                    <tr>
+                      <td><a href="#" target="_blank" data-saferedirecturl=""><img src="image/fb.png" class="CToWUd" width="25" /></a></td>
+                      <td><a href="#" target="_blank" data-saferedirecturl=""><img src="image/tweet.png" class="CToWUd" width="25" /></a></td>
+                      <td><a href="#" target="_blank" data-saferedirecturl=""><img src="image/google.png" class="CToWUd" width="25" /></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+              <td style="width:50%; font-size:11px;font-family:Arial,Helvetica,sans-serif;color:#fff;width:50%;text-align:right">&copy; Oyacharge 2016 </td>
+            </tr>
+          </tbody>
+        </table>
+        <span class="HOEnZb"><font color="#888888"><span class="m_678193774613953679HOEnZb"><font color="#888888"> </font></span></font></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<map name="Map" id="Map">
+  <area shape="poly" coords="213,310" href="#" />
+  <area shape="rect" coords="60,257,213,312" href="122" target="_blank" />
+  <area shape="rect" coords="215,257,376,314" href="#" target="_blank" />
+</map>
+
+</body>
+</html>
+
+';
+
+
+//==============================================================
+//==============================================================
+//==============================================================
+
+include("./mpdf.php");
+//$mpdf->Output('pdfs/'.$row.time().'.pdf','F');
+
+$mpdf = new mPDF();
+
+$mpdf->WriteHTML($html);
+$mpdf->Output('http://localhost/uploads'.'12222.pdf','F');
+exit;
+
+//==============================================================
+//==============================================================
+//==============================================================
+
+
+?>

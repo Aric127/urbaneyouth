@@ -1,0 +1,18 @@
+[17-Feb-2016 04:17:03 America/Chicago] PHP Fatal error:  Call to undefined function alert() in /home/theviolet/public_html/webservices/final_api2.php on line 2092
+[17-Feb-2016 05:18:26 America/Chicago] PHP Warning:  Unterminated comment starting line 2201 in /home/theviolet/public_html/webservices/final_api2.php on line 2201
+[17-Feb-2016 05:18:26 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/theviolet/public_html/webservices/final_api2.php on line 2205
+[04-Mar-2016 08:40:43 America/Chicago] PHP Fatal error:  Using $this when not in object context in /home/theviolet/public_html/webservices/new_scess.php on line 60
+[04-Mar-2016 08:45:07 America/Chicago] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/theviolet/public_html/webservices/new_scess.php on line 61
+[04-Mar-2016 08:45:07 America/Chicago] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/theviolet/public_html/webservices/new_scess.php on line 116
+[04-Mar-2016 08:46:18 America/Chicago] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/theviolet/public_html/webservices/new_scess.php on line 61
+[04-Mar-2016 08:46:18 America/Chicago] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/theviolet/public_html/webservices/new_scess.php on line 116
+[04-Mar-2016 09:00:00 America/Chicago] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/theviolet/public_html/webservices/new_scess.php on line 65
+[04-Mar-2016 09:00:00 America/Chicago] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/theviolet/public_html/webservices/new_scess.php on line 119
+[04-Mar-2016 22:10:11 America/Chicago] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/theviolet/public_html/webservices/final_api2.php on line 2463
+[04-Mar-2016 22:12:50 America/Chicago] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/theviolet/public_html/webservices/final_api2.php on line 2463
+[04-Mar-2016 23:42:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home/theviolet/public_html/webservices/new_scess.php on line 74
+[04-Mar-2016 23:43:33 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home/theviolet/public_html/webservices/new_scess.php on line 74
+[04-Mar-2016 23:45:57 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home/theviolet/public_html/webservices/new_scess.php on line 71
+[07-Mar-2016 04:31:25 America/Chicago] PHP Parse error:  syntax error, unexpected ''<input type="hid' (T_ENCAPSED_AND_WHITESPACE) in /home/theviolet/public_html/webservices/final_api2.php on line 376
+[07-Mar-2016 04:31:27 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/theviolet/public_html/webservices/final_api2.php on line 1873
+[07-Mar-2016 04:42:43 America/Chicago] PHP Parse error:  syntax error, unexpected ''privecy_policy_statu' (T_ENCAPSED_AND_WHITESPACE) in /home/theviolet/public_html/webservices/final_api2.php on line 272

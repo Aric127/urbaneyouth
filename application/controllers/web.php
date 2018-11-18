@@ -14,6 +14,7 @@ var $mydata;
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('email');
+        $this->load->library('toastr');
 		date_default_timezone_set("Africa/Lagos");
         define('category_image', base_url('uploads/category/'));
         define('category_thumb_image', base_url('uploads/category/thumb_img/'));
@@ -108,11 +109,53 @@ function quick_pay()
         $this->load->view('web/shareearn');
         $this->load->view('web/footer');
     }
+
+
+ function get_client_ip()
+ {
+      $ipaddress = '';
+      if (getenv('HTTP_CLIENT_IP'))
+          $ipaddress = getenv('HTTP_CLIENT_IP');
+      else if(getenv('HTTP_X_FORWARDED_FOR'))
+          $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+      else if(getenv('HTTP_X_FORWARDED'))
+          $ipaddress = getenv('HTTP_X_FORWARDED');
+      else if(getenv('HTTP_FORWARDED_FOR'))
+          $ipaddress = getenv('HTTP_FORWARDED_FOR');
+      else if(getenv('HTTP_FORWARDED'))
+          $ipaddress = getenv('HTTP_FORWARDED');
+      else if(getenv('REMOTE_ADDR'))
+          $ipaddress = getenv('REMOTE_ADDR');
+      else
+          $ipaddress = 'UNKNOWN';
+
+      return $ipaddress;
+ }
     function contactus()
     {
-    	$this->load->view('web/header');
-        $this->load->view('web/contactus');
-        $this->load->view('web/footer');
+    		if(!empty($this->input->post()))
+			{
+					$data  = $this->input->post();
+					unset($data['btnSubmit']);
+					$data['feedback_created_datetime']=date("Y-m-d H:i:s");
+					$data['user_ip']=$this->get_client_ip();
+					$result = $this -> login_model -> insert_data('user_feedbacks', $data);
+					if(!empty($result))
+					{
+						$this->toastr->success("Thanks for contact us.. we will shortly contact you.");
+						//	 $this->session->set_flashdata('status', "Thanks for contact us.. we will shortly contact you.");
+					}else {
+						$this->toastr->error("Have Some Technical issue. Please try after some time.");
+						//$this->session->set_flashdata('error', $message);
+					}
+					
+					redirect(base_url('ContactUs'));
+			}else
+			{
+		    	$this->load->view('web/header');
+		        $this->load->view('web/contactus');
+		        $this->load->view('web/footer');
+    		}
     }
 	function my_profile(){
 		 if ($this->session->userdata('user_id') == FALSE) {
@@ -126,7 +169,6 @@ function quick_pay()
 			$this->session->set_userdata(array('user_id'=>$user_id)); 
 		}
 		
-		//$user_id= $this->session->userdata('user_id');
 		$result=file_get_contents(base_url('webservices/api.php?rquest=user_profile&user_id='.$user_id));
 		$wallet=json_decode($result);
 		$data['my_profile']=json_decode($result);
@@ -233,16 +275,22 @@ function savedcard()
 	$expiry_month		=	$data['expiry_month'];
 	$expiry_year		=	$data['expiry_year'];
 	$cvv_no				=	$data['cvv_no'];
-	//echo base_url('webservices/api.php?rquest=save_cards&user_id='.$user_id.'&card_no='.$card_no.'&expiry_month='.$expiry_month.'&expiry_year='.$expiry_year.'&cvv_no='.$cvv_no);die;
-		$request=file_get_contents( base_url('webservices/api.php?rquest=save_cards&user_id='.$user_id.'&card_no='.$card_no.'&expiry_month='.$expiry_month.'&expiry_year='.$expiry_year.'&cvv_no='.$cvv_no));
+	$request=file_get_contents( base_url('webservices/api.php?rquest=save_cards&user_id='.$user_id.'&card_no='.$card_no.'&expiry_month='.$expiry_month.'&expiry_year='.$expiry_year.'&cvv_no='.$cvv_no));
 		$result=json_decode($request);
+		if(empty($result))
+		{
+			$this->toastr->error('Some Technical issue to save card details. Please try after sometime');
+			redirect(base_url('Save-Cards'));
+		}
 		 $status=$result->status;
-		 $message=$result->message;
+		 $message=$result->message; 
 		if($status=='true')
 		{
-			 $this->session->set_flashdata('status', "Card Add Successfully");
+			$this->toastr->success("Card Add Successfully");
+			// $this->session->set_flashdata('status', "Card Add Successfully");
 		}else {
-			$this->session->set_flashdata('error', $message);
+			$this->toastr->error($message);
+			//$this->session->set_flashdata('error', $message);
 		}
 		
 		redirect(base_url('Save-Cards'));
@@ -281,8 +329,8 @@ function savedcard()
 				$data['save_card']='';
 			}
 			
-		//	$data['bank_list']=$card_json->banks;
-		 $this->load->view('web/inner-header');
+		 $data1['uri_segment']='';
+		 $this->load->view('web/inner-header',$data1);
 		 $this->load->view('web/payment-details',$data);
 		 $this->load->view('web/inner_footer');
 	}
@@ -441,13 +489,12 @@ $request=file_get_contents( base_url('webservices/apiweb.php?rquest=recharge_fro
 		
 	}
 		  $result=json_decode($request);
-		  
-
-		    if($step == 1){
+		  if($step == 1){
 
 		    	if($result->para->status == 'error'){
-		    		$this->session->set_flashdata('payment_msg', $result->para->message);
-		    		redirect('web'); exit;
+		    		//$this->session->set_flashdata('payment_msg', $result->para->message);
+		    		$this->toastr->error($result->para->message);
+		    		redirect('web/payment_details'); 
 		    	}
 
 		    	$_SESSION['status'] = $result->status;
@@ -535,13 +582,21 @@ $request=file_get_contents( base_url('webservices/apiweb.php?rquest=recharge_fro
 		
 			}
 			$this->session->set_userdata('array',$data1);
+			if($result->status=='true')
+			{
+				$this->toastr->success($result->message,'Success');
+			}else{
+				$this->toastr->error($result->message,'Error');
+			}
+			
+			
 			redirect('Payment-Response');
 	}
 	}
 function response()
 {
 	
-	$data = $this->session->userdata('array');
+	$data = $this->session->userdata('array'); 
 	$this->load->view('web/inner-header');
 	$this->load->view('web/add-money-success',$data);
 	$this->load->view('web/inner_footer');
@@ -567,14 +622,12 @@ function payment_via_wallet()
 	$cn                 =   $this->session->userdata('cn');
 	if($wt_category=='2'  || $wt_category=='12')
 	{
-		//echo  base_url('webservices/api.php?rquest=recharge&recharge_user_id='.$user_id.'&wt_category='.$wt_category.'&recharge_category_id='.$rec_category.'&operator_id='.$operator_id.'&recharge_number='.$recharge_no.'&recharge_amount='.$amount.'&mobile_topup='.$mobile_topup.'&cn='.$cn);die;
 		$request=file_get_contents( base_url('webservices/api.php?rquest=recharge&recharge_user_id='.$user_id.'&wt_category='.$wt_category.'&recharge_category_id='.$rec_category.'&operator_id='.$operator_id.'&recharge_number='.$recharge_no.'&recharge_amount='.$amount.'&mobile_topup='.$mobile_topup.'&cn='.$cn));
 	}else if($wt_category=='11')
 	{
 		$consumer_number		=	$this->session->userdata('consumer_number'); 
 		$biller_category_id		=	$this->session->userdata('biller_category_id');
 		$biller_service_id		=	$this->session->userdata('biller_service_id'); 
-	//	echo base_url('webservices/api.php?rquest=bill_recharge&recharge_user_id='.$user_id.'&wt_category='.$wt_category.'&bill_category_id='.$biller_category_id.'&bill_invoice_no='.$consumer_number.'&bill_amount='.$amount);die;
 		$request=file_get_contents(base_url('webservices/api.php?rquest=bill_recharge&recharge_user_id='.$user_id.'&wt_category='.$wt_category.'&bill_category_id='.$biller_category_id.'&bill_invoice_no='.$consumer_number.'&bill_amount='.$amount));
 	}
 	else if($wt_category=='13')
@@ -590,13 +643,18 @@ function payment_via_wallet()
 		$event_id				=	$this->session->userdata('event_id'); 
 		$mobile_amount			=	$this->session->userdata('mobile_amount');
 		$ticket_json_array		=	$this->session->userdata('ticket_json_array'); 
-		//echo base_url('webservices/api.php?rquest=ticket_booking_payment&user_id='.$user_id.'&wt_category='.$wt_category.'&event_id='.$event_id.'&tickets_records='.$ticket_json_array.'&ticket_price='.$amount);die;
 		$request=file_get_contents( base_url('webservices/api.php?rquest=ticket_booking_payment&user_id='.$user_id.'&wt_category='.$wt_category.'&event_id='.$event_id.'&tickets_records='.$ticket_json_array.'&ticket_price='.$amount));
 	}
 			$result=json_decode($request);
 			//print_r($result);die;
 			$data1['status']=$result->status;
 			$data1['message']=$result->message;
+			if($result->status=='true')
+			{
+				$this->toastr->success($result->message,"Success");
+			}else{
+				$this->toastr->error($result->message,"Error");
+			}
 			$data1['trans_date']=$result->transaction_date;
 			if($rec_category=='1')
 			{
@@ -658,6 +716,12 @@ function payment_via_wallet()
 			$data1['transaction_via']='Oyacash';
 			$data1['amount']=$amount;
 			$data1['recharge_no']=$recharge_no;
+			if($result->status=='true')
+			{
+				$this->toastr->success($result->message,'Success');
+			}else{
+				$this->toastr->error($result->message,'Error');
+			}
 			$this->session->set_userdata('array',$data1);
 			redirect('Payment-Response');
 	}else{
@@ -776,6 +840,7 @@ function payment_via_bankaccount()
 			
 			$data1['status']=$result->status;
 			$data1['message']=$result->message;
+
 			$data1['trans_date']=$result->transaction_date;
 			$data1['transaction_via']="Bank Account";
 			
@@ -833,6 +898,12 @@ function payment_via_bankaccount()
 			$data1['event_date']=$data['event_details'][0]->event_date;
 			$data1['event_place']=$data['event_details'][0]->event_place;
 			$data1['ticket_records']=$ticket_json_array;
+			}
+			if($result->status=='true')
+			{
+				$this->toastr->success($result->message,'Success');
+			}else{
+				$this->toastr->error($result->message,'Error');
 			}
 			$this->session->set_userdata('array',$data1);
 			redirect('Payment-Response');
@@ -951,13 +1022,12 @@ function payment_via_savecard()
 	}
 			$result=json_decode($request);
 
-			//print_r($result); exit;
-
-			 if($step == 1){
+			if($step == 1){
 
 			 	if($result->para->status == 'error'){
-		    		$this->session->set_flashdata('payment_msg', $result->para->message);
-		    		redirect('web'); exit;
+		    	//	$this->session->set_flashdata('payment_msg', $result->para->message);
+			 		$this->toastr->error($result->para->message,"Error");
+		    		redirect('web/payment_details'); exit;
 		    	}
 
 		    	$_SESSION['status'] = $result->status;
@@ -1036,6 +1106,12 @@ function payment_via_savecard()
 			$data1['event_place']=$data['event_details'][0]->event_place;
 			$data1['ticket_records']=$ticket_json_array;
 			}
+			if($result->status=='true')
+			{
+				$this->toastr->success($result->message,'Success');
+			}else{
+				$this->toastr->error($result->message,'Error');
+			}
 			$this->session->set_userdata('array',$data1);
 			redirect('Payment-Response');
 		
@@ -1045,8 +1121,9 @@ function payment_via_savecard()
 }
 	function my_account()
 	{
+		$data1['uri_segment']='my_profile';
 		$data['my_profile']=$this->user_details();
-		$this->load->view('web/inner-header');
+		$this->load->view('web/inner-header',$data1);
 		 $this->load->view('web/my-account',$data);
 		 $this->load->view('web/inner_footer');
 	}
@@ -1074,7 +1151,8 @@ function payment_via_savecard()
 			}else{
 				$data['save_card']='';
 			}
-		$this->load->view('web/inner-header');
+		 $data['uri_segment']='save_card';
+		 $this->load->view('web/inner-header',$data);
 		 $this->load->view('web/Save_Cards',$data);
 		 $this->load->view('web/inner_footer');
 	}
@@ -1095,7 +1173,8 @@ function payment_via_savecard()
 		$bank=file_get_contents( base_url('webservices/api.php?rquest=bank_details'));
 		$bank_json=json_decode($bank);
 		$data['bank_list']=$bank_json->banks;
-		$this->load->view('web/inner-header');
+		$data['uri_segment']='wallet_amount';
+		$this->load->view('web/inner-header',$data);
 		$this->load->view('web/wallet',$data);
 		$this->load->view('web/inner_footer');
 		}
@@ -1488,6 +1567,7 @@ function pay_bill(){
 		$where11 = array('coupon_status' =>1);
         $data['coupon_list'] = $this->login_model->get_data_where_condition('free_coupon_list', $where11);
 		$data['wt_category']=$wt_category;
+		$data['uri_segment']='my_trans';
 		$this->load->view('web/inner-header',$data);
         $this->load->view('web/my-transactions',$data);
       	$this->load->view('web/inner_footer');
@@ -1591,7 +1671,7 @@ function repeat_add_sms(){
 		$wallet=json_decode($result);
 		$data['my_profile']=json_decode($result);
 		$data['my_wallet']=$wallet->wallet_amount;
-	
+		$data['uri_segment']='wallet_amount';
 		//$result=file_get_contents( base_url('webservices/api.php?rquest=user_profile&user_id='.$user_id));
 		//$data['my_wallet']=json_decode($result);
 		$this->load->view('web/inner-header',$data);
@@ -1612,13 +1692,16 @@ function repeat_add_sms(){
  	}
 		function contact_us()
 		{
-			$f_data['contact_details'] = $this->contact_details();
-			$f_data['footer'] = $this->footer();
- 			$result=file_get_contents( base_url('webservices/api.php?rquest=contact_us'));
-			$data['result']=json_decode($result);
-			$this->load->view('web/header');
-	        $this->load->view('web/contact_us',$data);
-	        $this->load->view('web/footer',$f_data);
+			
+				$f_data['contact_details'] = $this->contact_details();
+				$f_data['footer'] = $this->footer();
+	 			$result=file_get_contents( base_url('webservices/api.php?rquest=contact_us'));
+				$data['result']=json_decode($result);
+				$this->load->view('web/header');
+		        $this->load->view('web/contact_us',$data);
+		        $this->load->view('web/footer',$f_data);
+
+			
 		}
 		function faq()
 		{
@@ -1679,6 +1762,12 @@ function repeat_add_sms(){
 			$data1['wt_category']=5;
 			$data1['amount']=$amount;
 			$data1['recharge_no']=$mobile_no;
+			if($result->status=='true')
+				{
+					$this->toastr->success($result->message,'Success');
+				}else{
+					$this->toastr->error($result->message,'Error');
+				}
 			$this->session->set_userdata('array',$data1);
 			redirect('Payment-Response');
         }
@@ -2827,6 +2916,12 @@ function guest_payment_via_bankaccount()
 			$data1['event_place']=$data['event_details'][0]->event_place;
 			$data1['ticket_records']=$ticket_json_array;
 			}
+			if($result->status=='true')
+			{
+				$this->toastr->success($result->message,'Success');
+			}else{
+				$this->toastr->error($result->message,'Error');
+			}
 			$this->session->set_userdata('array',$data1);
 			redirect('Quick-Response');
 	}
@@ -2877,7 +2972,8 @@ function wallet_to_bank()
 		curl_close($curl);
 
 		if ($err) {
-		  echo "cURL Error #:" . $err;
+		  $this->toastr->error($err,'Error');
+			
 		} else {
 
 		 		$result 					=	json_decode($response);
@@ -2906,7 +3002,12 @@ function wallet_to_bank()
 				$data1['user_bank_code']	=	$user_bank_code;
 
 				//print_r($data1); exit;
-
+				if($result->status=='true')
+				{
+					$this->toastr->success($result->message,'Success');
+				}else{
+					$this->toastr->error($result->message,'Error');
+				}
 				$this->session->set_userdata('array',$data1);
 				redirect('Payment-Response');
 		}

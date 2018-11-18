@@ -1,7 +1,7 @@
 <?php $wt_category=$this->session->userdata('wt_category');
 $coupon_id=$this->session->userdata('coupon_id');
 $coupon_amount=$this->session->userdata('coupon_amount'); ?>
-
+<?php $this->load->view('alert'); ?>
 <div class="container-fluid"> 
       <div class="container over-lap-div payment-detail">
          <div class="col-sm-12 col-xs-12 col-lg-12 recharge-result" style="min-height: 560px;">
@@ -71,7 +71,7 @@ $coupon_amount=$this->session->userdata('coupon_amount'); ?>
 								<span class="cvv-in-des">
 								  <div class="cvv">
 									  <div class="form-group">                               
-									   <input type="text" class="form-control" placeholder="CVV" id="cvv" name="cvv_no[]"  max="3">
+									   <input type="text" class="form-control" placeholder="CVV" id="cvv" name="cvv_no[]"   maxlength="3" minlength="3" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
 									   <input type="hidden" class="form-control" name="card_token[]" value="<?php  echo $val->card_token ?>">
 										</div>
 								  </div>
@@ -98,7 +98,7 @@ $coupon_amount=$this->session->userdata('coupon_amount'); ?>
                     <div class="sv-card-des1">
                           <div class="form-group has-feedback">
                               <label for="usr">Card Number</label>                               
-                              <input type="text" class="form-control" placeholder="" id="card_no" name="card_no" value="" onkeyup="check_card_no(this.value)" autocomplete="off" pattern="[0-9.]+" maxlength="23" autocomplete="off">
+                              <input placeholder="xxxx-xxxx-xxxx-xxxx" type="text" class="form-control" placeholder="" id="card_no" name="card_no" value="" onkeyup="check_card_no(this.value)" autocomplete="off" pattern="[0-9.]+" maxlength="23" autocomplete="off">
 
                              <span class="form-control-feedback glyphicon glyphicon-ok" id="validcard" style="display: none"></span>
 
@@ -114,18 +114,18 @@ $coupon_amount=$this->session->userdata('coupon_amount'); ?>
                                 <label for="usr">Expiry Month</label>                               
                               <select id="expiry_month" class="card-select-op" name="expiry_month">
                                	<option value="">MM</option>
-								<option value="01">01</option>
-								<option value="02">02</option>
-								<option value="03">03</option>
-								<option value="04">04</option>
-								<option value="05">05</option>
-								<option value="06">06</option> 
-								<option value="07">07</option>
-								<option value="08">08</option>
-								<option value="09">09</option>
-								<option value="10">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>                               
+                								<option value="01">01</option>
+                								<option value="02">02</option>
+                								<option value="03">03</option>
+                								<option value="04">04</option>
+                								<option value="05">05</option>
+                								<option value="06">06</option> 
+                								<option value="07">07</option>
+                								<option value="08">08</option>
+                								<option value="09">09</option>
+                								<option value="10">10</option>
+                								<option value="11">11</option>
+                								<option value="12">12</option>                               
                                </select>
                                <span id="expiry_month_error"></span>
                           </div>
@@ -134,22 +134,21 @@ $coupon_amount=$this->session->userdata('coupon_amount'); ?>
                                 <div class="form-group">
                                   <label for="usr">Expiry Year</label>                               
                                  
-                                    <select id="expiry_year" class="card-select-op" name="expiry_year">
-                               	<option value="">YYYY</option>
-								<option value="2017">2017</option>
-								<option value="2018">2018</option>
-								<option value="2019">2019</option>
-								<option value="2020">2020</option>
-								<option value="2021">2021</option>
-								<option value="2022">2022</option> 
-								<option value="2023">2023</option>
-								<option value="2024">2024</option>
-								<option value="2025">2025</option>
-								<option value="2026">2026</option>
-								<option value="2027">2027</option>
-								<option value="2028">2028</option>               
-								<option value="2029">2029</option>
-								<option value="2030">2030</option>                               
+                              <select id="expiry_year" class="card-select-op" name="expiry_year">
+                               	        <option value="">YYYY</option>
+                        								<option value="2018">2018</option>
+                        								<option value="2019">2019</option>
+                        								<option value="2020">2020</option>
+                        								<option value="2021">2021</option>
+                        								<option value="2022">2022</option> 
+                        								<option value="2023">2023</option>
+                        								<option value="2024">2024</option>
+                        								<option value="2025">2025</option>
+                        								<option value="2026">2026</option>
+                        								<option value="2027">2027</option>
+                        								<option value="2028">2028</option>               
+                        								<option value="2029">2029</option>
+                        								<option value="2030">2030</option>                               
                                </select>
                                 <span id="expiry_year_error"></span>
                                 </div>
@@ -157,7 +156,7 @@ $coupon_amount=$this->session->userdata('coupon_amount'); ?>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                   <label for="usr">CVV Number</label>                               
-                                  <input type="text" class="form-control" placeholder="CVV" name="cvv_no" id="cvv_no" value="" maxlength="3">
+                                  <input type="text" class="form-control" placeholder="CVV" name="cvv_no" id="cvv_no" value="" maxlength="3" minlength="3" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                                    <span id="savecvv_error"></span>
                                 </div>
                             </div>

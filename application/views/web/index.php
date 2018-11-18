@@ -10,6 +10,8 @@
     <!-- Bootstrap -->
     <script src="<?php echo base_url(); ?>webassets/js/jquery-1.11.1.min.js"></script>
     <script src="<?php echo base_url(); ?>wassets/js/config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <script src="<?php echo base_url('wassets/js/my.js'); ?>"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url('wassets/css/bootstrap.min.css');?>" rel="stylesheet">
@@ -180,7 +182,7 @@ $(function () {
 
     <script>
         jQuery(document).ready(function($) {
-
+        	
             // site preloader -- also uncomment the div in the header and the css style for #preloader
             $(window).load(function() {
                 $('#preloader').fadeOut('slow', function() {
@@ -221,6 +223,15 @@ $(function () {
                 $('#preloader').showLoading();
 
                 $('#preloader').hideLoading();
+            });
+
+        });
+        $(document).ready(function() {
+            $("#SignupModalbtn").click(function(e) {
+            		$("#user_email,#user_mobile_no,#user_pass,#reffer_code").val('');
+            		$("#signup_mob_error").text('');
+            		$("#signup_mob_error").removeClass('errormsg');
+
             });
 
         });
@@ -1462,7 +1473,7 @@ $(function () {
                 </div>
                 <div class="modal-footer">
                     <div class="text-center">
-                        Don't have an account? <a href="#SignupModal" data-toggle="modal" data-dismiss="modal"> Signup here.</a>
+                        Don't have an account? <a href="#SignupModal" data-toggle="modal" data-dismiss="modal" id="SignupModalbtn"> Signup here.</a>
                     </div>
                 </div>
             </div>
@@ -1474,7 +1485,7 @@ $(function () {
         <div class="log-in-pop-left">
           <h2  style="text-transform: capitalize;">Welcome to oyacharge</h2>
           <p>Don't have an account? Create your account. It's take less then a minutes</p>
-          <h4>Login with social media</h4>
+          <h4>Login with</h4>
           <ul>
             <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
             </li>
@@ -1488,7 +1499,7 @@ $(function () {
           </a>
           <h4>Create an Account</h4>
           <p>Don't have an account? Create your account. It's take less then a minutes</p>
-          <form class="s12">
+          <form class="s12" id="signup_form">
             <div>
               <div class="input-field s12">
                <div class="form-group">
@@ -1538,7 +1549,7 @@ $(function () {
                 <input type="submit" value="Register" class="waves-effect waves-light log-in-btn"  data-toggle="modal"   onclick="signup_user()"> </div>
             </div>
             <div>
-              <div class="input-field s12"> <a href="#" data-toggle="modal"  onclick="signup_user()">Are you a already member ? Login</a> </div>
+              <div class="input-field s12"> <a href="#" data-toggle="modal"  onclick="show_login()">Are you a already member ? Login</a> </div>
             </div>
           </form>
         </div>
@@ -1548,62 +1559,8 @@ $(function () {
 
          <div   id="ForgotModal" class="modal" data-easein="pulse"  tabindex="-1" role="dialog" aria-labelledby="costumModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"> &times; </button>
-                    <h4 class="modal-title text-center">Signup</h4>
-                </div>
-                <div class="modal-body getway-block">
-                    <div class="form-group">
-                        <input type="text" placeholder="Mobile Number" class="form-control" required id="user_mobile_no" value="" onkeyup="check_signup_number()" autocomplete="off">
-                        <div class="d">
-                            <span id="signup_mob_error"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Enter Your Email" class="form-control" required onblur="check_email()" value="" id="user_email" autocomplete="off">
-                        <div class="d">
-                            <span id="signup_email_error"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="Password" placeholder="Enter Password" class="form-control" required onkeyup="check_password()" id="user_pass" value="" autocomplete="off" maxlength="4" minlength="4">
-                        <div class="d">
-                            <span id="signup_pass_error"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <p>You have reffer code? Please Enter here.</p>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Enter Reffer Code (optional)" class="form-control" required onblur="check_reffer_code()" value="" id="reffer_code" autocomplete="off">
-                        <div class="d">
-                            <span id="signup_ref_error"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <p> Tip: Protect your account. Use a mixed case alphanumeric password with special characters. </p>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-submit full-width" data-toggle="modal" type="button" onclick="signup_user()"> Signup </button>
-                    </div>
-                    <div class="form-group">
-                        <div class="d">
-                            <span id="signup_error"></span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <div class="text-center">
-                        Already have an account? <a data-dismiss="modal" data-toggle="modal" href="#LoginModal"> Login</a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
+           </div>
+       </div>
 
        
 
@@ -1976,6 +1933,8 @@ $(function () {
 
         <script>
             function show_login() {
+            	
+            	$("#SignupModal").modal('hide');
                 $("#LoginModal").modal();
             }
             // Auto logout functionlity

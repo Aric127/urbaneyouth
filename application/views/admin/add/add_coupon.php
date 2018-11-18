@@ -89,6 +89,12 @@
                 <input type="text" name="coupon_expire_date" id="end_date" data-start-date="d" <?php if(!empty($coupon_details)){ ?>value="<?php echo $coupon_details[0]->coupon_expire_date; } ?>" class="form-control datepicker" placeholder="Coupon Expiry Date" data-format="yyyy-mm-dd"/>
             
             </div>
+
+           <!--  <div class="form-group">
+                <label class="control-label">Coupon Image</label>
+                <input type="file" name="coupon_image" class="form-control" >
+            </div> -->
+
             <div class="form-group">
                 <label class="control-label">Coupon Description</label>
              <textarea class="form-control ckeditor" rows="5" name="coupon_desc"  data-validate="required"  placeholder=" Content "><?php if(!empty($coupon_details)){ ?> <?php echo $coupon_details[0]->coupon_desc ; } ?></textarea>

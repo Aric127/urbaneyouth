@@ -308,7 +308,9 @@
         $(this).parents('.dropdown-select').find('.dropdown-toggle').html(target + ' <span class="caret"></span>');
     });
 </script>
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 <script>
     // When the browser is ready...
@@ -356,19 +358,18 @@
 </script>
 
 <script>
-
 $(document).ready(function() {
+    
+
 	 $('#example12').DataTable();
+     $(".form-control input-sm").click();
 	 $("#tbl_12").DataTable();
 	 $("#tbl_123").DataTable();
 } );
-
-
 </script>
 
 
-<script src=" https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js "></script>
+
 
 
 

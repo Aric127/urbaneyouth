@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/oyacharge/';
+$config['base_url']	= 'http://localhost/oya/urbaneyouth/';
 
 /*
 |--------------------------------------------------------------------------

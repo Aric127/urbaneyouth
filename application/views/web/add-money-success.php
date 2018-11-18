@@ -1,5 +1,5 @@
 
-
+<?php $this->load->view('alert'); ?>
 <div class="container-fluid"> 
       <div class="container over-lap-div">
          <div class="col-sm-12 col-xs-12 col-lg-12 recharge-result" style="min-height: 450px;">
@@ -190,7 +190,7 @@
               </div>
              <div class="col-md-6 rgtcolm">
                    <div class="center-block">
-                   <img src="https://oyacharge.com/wassets/images/happy1.png" width="100%" >
+                   <img src="<?php echo base_url('wassets/images/happy1.png');?>" width="100%" >
                    <!-- <img src="https://oyacharge.com/wassets/images/happy1.png" width="100%"> -->
 
 

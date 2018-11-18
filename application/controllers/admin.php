@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('email');
+        $this->load->library('toastr');
 		date_default_timezone_set("Africa/Lagos");
 		define('church_image',base_url('uploads/church_image'));
  		define('operator_image', base_url('uploads/operator/'));
@@ -973,6 +974,7 @@ function recharge_content()
         $this->load->view('admin/footer');
     }
 	function add_recharge_category(){
+       
 		   if ($this->input->post('submit')) {
             $data = $this->input->post();
             unset($data['submit']);
@@ -982,6 +984,7 @@ function recharge_content()
             if (empty($rec)) {
                 $this->login_model->insert_data('recharge_category', $data);
                 $this->session->set_flashdata('status', 'Recharge Category added successfully');
+                
              } else {
                 $this->session->set_flashdata('error', 'Recharge Category already exist');
             }
@@ -1202,6 +1205,7 @@ function recharge_content()
             $data = $this->input->post();
             unset($data['submit']);
 			$data['coupon_create_date']=date("y-m-d");
+			
             //$ch = array("brand_type_name" => strtoupper($this->input->post("brand_type_name")));
             //$rec = $this->login_model->get_data_where_condition('brand_type', $ch);
            // if (empty($rec)) {

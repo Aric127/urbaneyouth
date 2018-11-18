@@ -8,13 +8,15 @@
       <title>OyaCharge</title>
       <!-- Bootstrap -->
       <script src="<?php echo base_url(); ?>webassets/js/jquery-1.11.1.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
       <script src="<?php echo base_url(); ?>wassets/js/config.js"></script>
     <script src="<?php echo base_url('wassets/js/my.js'); ?>"></script>
     <!-- Bootstrap -->
       <link href="<?php echo base_url('wassets/css/bootstrap.min.css');?>" rel="stylesheet">
       <link href="<?php echo base_url('wassets/css/style.css');?>" rel="stylesheet">
       <link href="<?php echo base_url('wassets/css/responsive.css');?>" rel="stylesheet">
-      <link href="https://oyacharge.com/wassets/css/recharge.css" rel="stylesheet">
+      <link href="<?php echo base_url('wassets/css/recharge.css');?>" rel="stylesheet">
 
       <link href="<?php echo base_url('wassets/css/font-awesome.css');?>" rel="stylesheet">
       <link href="<?php echo base_url('wassets/css/simple-line-icons.css');?>" rel="stylesheet">
@@ -38,34 +40,10 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12 col-sm-12 col-xs-4">
-                     <a href="<?php echo base_url('web') ?>" title="Lexi app landing page">
+                     <a href="<?php echo base_url('web') ?>" title="OyaCharge">
                      <img src="<?php echo base_url('wassets/images/logo.png');?>"> </a>
                   </div>
-                  <!-- <div class="col-md-8 col-sm-6 col-xs-12">
-                      <ul class="nav animated-nav navbar-nav">
-                        <li><a href="#"><span data-hover="Home">Home</span></a></li>
-                        <li><a href="#"><span data-hover="About"> About</span></a></li>
-                        <li><a href="#"> <span data-hover="Share & Earn"> Share & Earn</span></a></li>
-                        <li><a href="#faq" title="FAQ"><span data-hover="FAQ">FAQ</span></a></li>
-                        <li><a href="#contact" title="Contact"><span data-hover="Contact">Contact</span></a></li>
-                        <?php $user_id= $this->session->userdata('user_id'); 
-                        if(empty($user_id)){?>
-                <li><a href="<?php echo site_url('web/recharge_details') ?>" data-toggle="modal" title="Contact"><span data-hover="Login">Login</span></a></li>
-                 <!--  <li><a href="#LoginModal" data-toggle="modal" title="Contact"><span data-hover="Login">Login</span></a></li> --
-                <?php }else { ?>
-                	  <li><a onclick="Logout()" title="Logout"><span data-hover="Logout">Logout</span></a></li>
-              <?php  } ?>
-                     </ul>  
-                  </div> -->
-                  <!-- <div class="col-md-2 col-sm-3 col-xs-5 menu">
-                     <a href="#">Menu</a> 
-                     <div id="nav_icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                     </div>
-                  </div> -->
+                 
                </div>
             </div>
          </div>
@@ -99,7 +77,7 @@
 
             <ul class="nav navbar-nav">
 
-                <li class="active"><a href="javascript:void(0)" onclick="Home()">
+                <li ><a href="javascript:void(0)" onclick="Home()">
                     <div class="inner-heading-m">
                       <figure>
                         <i class="icon-home"></i>
@@ -109,7 +87,7 @@
                   </a>
                 </li>
 
-                <li>
+                <li <?php  if(!empty($uri_segment)) if($uri_segment=='my_profile'){ ?> class="active" <?php } ?>>
                 <a href="<?php echo base_url('My-Account');?>">
                     <div class="inner-heading-m">
                       <figure>
@@ -120,7 +98,7 @@
                   </a>
                 </li>
 				
-				<li>
+				      <li <?php if(!empty($uri_segment)) if($uri_segment=='save_card'){ ?> class="active" <?php } ?>>
                 <a href="<?php echo base_url('Save-Cards');?>">
                     <div class="inner-heading-m">
                       <figure>
@@ -131,7 +109,7 @@
                   </a>
                 </li>
 
-                <li>
+                <li <?php if(!empty($uri_segment)) if($uri_segment=='my_trans'){ ?> class="active" <?php } ?>>
                   <a href="<?php echo base_url('Transaction');?>">
                     <div class="inner-heading-m">
                       <figure>
@@ -143,7 +121,7 @@
 
                 </li>
 
-                <li>
+                <li <?php if(!empty($uri_segment)) if($uri_segment=='wallet_amount'){ ?> class="active" <?php } ?>>
                   <a href="<?php echo base_url('Wallet');?>">
                     <div class="inner-heading-m">
                       <figure>

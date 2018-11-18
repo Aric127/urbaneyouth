@@ -3403,6 +3403,7 @@ a, a:hover, a:focus,a:active{ text-decoration:none; outline:none !important;}
 }
 img.center-block.qr-code-box {
     border: 1px solid #eee;
+    width: 200px;
 }
 .hero:before {
   content: '';
@@ -5477,8 +5478,12 @@ padding-right: 25px;
 }
  
 input.form-control {
-    height: 44px;
+    height: 40px;
     border-radius: 4px;
+}
+img.center-block.qr-code-box:hover {
+    box-shadow: 2px 3px 25px 7px #eee;
+    border: 1px solid hsl(119, 99%, 33%);
 }
 .my-dt h3 {
     color: #456776;

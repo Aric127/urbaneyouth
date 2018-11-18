@@ -24,6 +24,9 @@
         </div>
     </div>
 <?php } ?>
+<?php
+    $this->load->view('alert');
+    ?>
 <div class="panel panel-default">
 
     <div class="panel-heading">

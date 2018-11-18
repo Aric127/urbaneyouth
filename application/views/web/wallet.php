@@ -4,7 +4,7 @@
     <div class="container over-lap-div">
         <div class="col-sm-12 col-xs-12 col-lg-12 recharge-result" style="min-height: 680px;">
             <div class="trans-head-div">
-                <h2 class=""><img src="https://oyacharge.com/wassets/images/wallet-icon-heading.png"  width="60"> Wallet</h2>
+                <h2 class=""><img src="<?php echo base_url('wassets/images/wallet-icon-heading.png');?>"  width="60"> Wallet</h2>
             </div>
             <div class="balance">
                 <h2 class="blue">Available Balance  <span class="pull-right">&#8358; <?php echo $my_wallet; ?></span></h2>
@@ -24,10 +24,10 @@
                                 <div class="bank-select-op">
                                     <div class="form-group">
                                         <label for="usr">Amount</label>
-                                        <input class="form-control" id="amount" placeholder="Enter Amount" name="amount" required="" value="" type="text">
+                                        <input class="form-control" id="amount" placeholder="Enter Amount" name="amount" required="" value="" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                                     </div>
                                     <div class="form-group">
-                                        <label for="usr">Pay With</label>
+                                        <label for="usr">Enter Promocode</label>
                                         <div class="row pay-apply">
                                             <div class="col-sm-9 ">
                                                 <input class="form-control" id="promo_code" placeholder="Apply Promocode" name="promo_code" value="" type="text">
@@ -60,12 +60,12 @@
                                 <div class="bank-select-op">
                                     <div class="form-group">
                                         <label for="usr">Mobile No.</label>
-                                        <input class="form-control" id="transfer_mobile_no" placeholder="Enter Number" name="transfer_mobile_no" required="" value="" type="text" onblur="check_number_field()">
+                                        <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" id="transfer_mobile_no" placeholder="Enter Number" name="transfer_mobile_no" required="" value="" type="text" onblur="check_number_field()">
                                         <span id="number_error"></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="usr">Amount</label>
-                                        <input class="form-control" id="transfer_amount" placeholder="Enter Amount" name="transfer_amount" required="" value="" type="text" onblur="check_amount_field()">
+                                        <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" id="transfer_amount" placeholder="Enter Amount" name="transfer_amount" required="" value="" type="text" onblur="check_amount_field()">
                                         <span id="amount_error"></span>
                                     </div>
                                 </div>
@@ -127,9 +127,9 @@
 
                 <div class="col-sm-4 col-md-4 col-xs-12">
                     <div id="owl-demo" class="owl-carousel add-mo-slide owl-theme">
-                        <div class="item"><img src="https://oyacharge.com/wassets/images/add-money-patten.png" class="center-block"></div>
-                        <div class="item"><img src="https://oyacharge.com/wassets/images/bank-wallet-patten.png" class="center-block"></div>
-                        <div class="item"><img src="https://oyacharge.com/wassets/images/transfer-money-patten.png" class="center-block"></div>
+                        <div class="item"><img src="<?php echo base_url('wassets/images/add-money-patten.png');?>" class="center-block"></div>
+                        <div class="item"><img src="<?php echo base_url('wassets/images/bank-wallet-patten.png');?>" class="center-block"></div>
+                        <div class="item"><img src="<?php echo base_url('wassets/images/transfer-money-patten.png');?>" class="center-block"></div>
                     </div>
                 </div>
 
@@ -399,7 +399,8 @@ $(document).ready(function() {
 
                     $('#promo_code').attr('style', 'border-color: red');
                     $('#coupon_status').attr('style', 'color: red');
-                    $("#coupon_status").text(message);
+                    toastr.error(message,"Error");
+                   
                 }
             }
         });

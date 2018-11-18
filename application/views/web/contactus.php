@@ -8,20 +8,23 @@
          </div>
        </div>
        <div class="col-md-6">
+       	<?php 
+       	$this->load->view('alert');
+       	?>
          <div class=" contact-form">
             
-            <form method="post">
+            <form method="post" action="<?php echo base_url('ContactUs'); ?>" id="contact-form">
                 <h3>Drop Us a Message</h3>
                <div class="row">
                	     <div class="col-md-6">
                        <div class="form-group">
-                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                            <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Your Name *" value="" />
                         </div>
                          
                     </div>
                	     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                            <input type="email" name="user_email" id="user_email" class="form-control" placeholder="Your Email *" value="" />
                         </div> 
                          
                     </div>
@@ -29,10 +32,10 @@
                         
                        
                         <div class="form-group">
-                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                            <input type="text" name="user_phone" id="user_phone" class="form-control" placeholder="Enter Phone Number *" value="" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
                         </div>
                         <div class="form-group">
-                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                            <textarea name="user_msg" id="user_msg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
                         </div>
                        
                     </div>

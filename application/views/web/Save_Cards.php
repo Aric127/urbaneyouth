@@ -16,32 +16,8 @@
 						</b>
 					</div>
 				  </div> 
-				  <?php if ($this->session->flashdata('status')) { ?>
-				    <div class="row">
-				        <div class="col-md-12">
-				            <div class="alert alert-success">
-				                <button type="button" class="close" data-dismiss="alert">
-				                    <span aria-hidden="true">&times;</span>
-				                    <span class="sr-only">Close</span>
-				                </button>
-				                <strong><?php echo $this->session->flashdata('status'); ?></strong>
-				            </div>
-				        </div>
-				    </div>
-			<?php } ?>
-			<?php if ($this->session->flashdata('error')) { ?>
-			    <div class="row">
-			        <div class="col-md-12">
-			            <div class="alert alert-danger">
-			                <button type="button" class="close" data-dismiss="alert">
-			                    <span aria-hidden="true">&times;</span>
-			                    <span class="sr-only">Close</span>
-			                </button>
-			                <strong><?php echo $this->session->flashdata('error'); ?></strong>
-			            </div>
-			        </div>
-			    </div>
-			<?php } ?>
+                    <?php $this->load->view('alert'); ?>
+				
                     <div class="save-cards-div">
                         <h3>Your Saved Cards</h3>
 						
@@ -91,7 +67,7 @@
                 <div class="col-sm-6 col-xs-12 text-center save-cardright-img-div">
                     <figure>
                         <div class="first-add-card">
-                            <img src="https://oyacharge.com/wassets/images/save-cards.png" width="300" class="center-block">
+                            <img src="<?php echo base_url('wassets/images/save-cards.png');?>" width="300" class="center-block">
                             <h3>Add your Credit/Debit Card and experience a faster checkout experience</h3>
                             <h5>For safety, we will never save CVV on your card</h5>
                             <a href="javascript:void(0)" class="btn blue-btn half-w-blue-btn text-center add_card" id="add_card-bt">Add Card</a>
@@ -137,7 +113,6 @@
 
                                             <select id="expiry_year" class="card-select-op" name="expiry_year">
                                                 <option value="">YYYY</option>
-                                                <option value="2017">2017</option>
                                                 <option value="2018">2018</option>
                                                 <option value="2019">2019</option>
                                                 <option value="2020">2020</option>
@@ -169,7 +144,7 @@
 
                             <div class="form-group">
                                 <a href="javascript:void(0)" onclick="add_new_card()" class="btn blue-btn btn proc text-center">Add Card</a>
-                                <a href="<?php echo base_url(); ?>" class="btn gray-btn btn proc text-center">Cancel</a>
+                                <a href="javascript:void(0)" class="btn gray-btn btn proc text-center" id="cancel_card-bt">Cancel</a>
                             </div>
 
                         </div>
@@ -197,6 +172,10 @@
         $('#add_card-bt').click(function(e) {
             $('.first-add-card').css('display', 'none');
             $('.second-add-card').css('display', 'block');
+        });
+        $('#cancel_card-bt').click(function(e) {
+            $('.first-add-card').css('display', 'block');
+            $('.second-add-card').css('display', 'none');
         });
     });
 </script>

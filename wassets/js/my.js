@@ -220,7 +220,6 @@ function user_login()
 
 	var user_login = $("#user_mobile_login").val();
 	var user_password = $("#user_password").val();
-	
 	if(user_login !='' && user_password !=''){
 	if(user_login=='')
 	{
@@ -329,15 +328,14 @@ function user_login()
 							var consumer_number=localStorage.getItem("consumer_number");
 							var send_data= home_url + "pay_bill?i_n=" + consumer_number + "&biller_category_id=" + biller_category_id + "&biller_service_id=" + biller_service_id;
 						     location.href = send_data;
-						     location.href = send_data;
-							}else if(wt_category=='12')
+						    }else if(wt_category=='12')
 							{
 							var electric_card_number=localStorage.getItem("electric_card_number");
 							var electricty_operator_id=localStorage.getItem("electricty_operator_id");
 							var electrice_amount=localStorage.getItem("electrice_amount");
 							var customer_name = localStorage.getItem("electricity_customer_name");
 							var send_data= home_url + "recharge_details?mobile=" + electric_card_number + "&mobile_operator_id=" + electricty_operator_id + "&mobile_amount=" + electrice_amount+"&cn="+customer_name;
-						location.href = send_data;
+								location.href = send_data;
 							}else if(wt_category=='13'){
 							
 							var church_price=localStorage.getItem("church_price");
@@ -356,14 +354,11 @@ function user_login()
 									location.href = send_data;
 							}
 							else{
-							location.href = home_url + "my_account";
+								toastr.success("Login Successfully",'Success');
+								location.href = home_url + "my_account";
 							}
 						}
 					});
-					if (getdata.mobile == '') {
-
-					} else {
-						}
 				} else if (status == 'false') {
 					$("#login_mob_error").removeClass("errormsg");
 					$("#login_mob_error").text('');
@@ -393,14 +388,16 @@ function user_login()
 //Logout
 function Logout()
 {
+	if(confirm('Are you sure, You want logout?'))
+	{
 
-	localStorage.setItem("mobileno","");
-	location.href = home_url +"logout";
-	localStorage.setItem("mobileno","");
-	localStorage.setItem("rec_category",'');
-	localStorage.setItem("wt_category",'');
-	localStorage.clear();
- 
+		localStorage.setItem("mobileno","");
+		localStorage.setItem("mobileno","");
+		localStorage.setItem("rec_category",'');
+		localStorage.setItem("wt_category",'');
+		localStorage.clear();
+		location.href = home_url +"logout";
+ }
 }
 function check_signup_number() {
 	var user_mobile = $("#user_mobile_no").val();
@@ -2213,10 +2210,7 @@ function user_update() {
 			if (status == 'true') {
 				$("#user_name").text(user_name);
 				$("#user_email").text(user_email);
-				$("#success_profile").css("display", "block");
-				$("#success_profile").css("color", "green");
-				//$("#success_profile").addClass("succ");
-				$('#profile_success').text(message);
+				toastr.success(message, 'Success');
 				$.ajax({
 					url : site_url + "user_login",
 					type : "POST",
@@ -2230,8 +2224,9 @@ function user_update() {
 				});
 			}else{
 				$("#success_profile").css("display", "block");
-				$("#success_profile").addClass("warn");
-				$('#profile_success').text(message);
+				toastr.success(message);
+				//$("#success_profile").addClass("warn");
+				//$('#profile_success').text(message);
 			}
 		}
 	});
@@ -2242,7 +2237,7 @@ function change_password() {
 	var user_id = $("#user_id").val();
 	var new_password = $("#new_password").val();
 	var confirm_password = $("#confirm_password").val();
-	if (old_pass == '') {
+	if (old_pass == '' ) {
 		$("#old_pass_error").addClass("errormsg my_account-error");
 		$("#old_pass_error").text('Please Enter Old Password');
 		$('#new_password,#confirm_password').removeClass("errormsg my_account-error");
@@ -2305,8 +2300,9 @@ function change_password() {
 			if (status == 'true') {
 			
 				if (new_password != confirm_password) {
-					$("#confirm_pass_error").addClass("errormsg my_account-error");
-					$('#confirm_pass_error').text("New password and confirm password are mismatched");
+					toastr.error('New password and confirm password are mismatched', 'Error');
+					// $("#confirm_pass_error").addClass("errormsg my_account-error");
+					// $('#confirm_pass_error').text("New password and confirm password are mismatched");
 				} else {
 
 					$.ajax({
@@ -2323,8 +2319,9 @@ function change_password() {
 							var getdata = jQuery.parseJSON(data);
 							var status = getdata.status;
 							var message = getdata.message;
-							$("#success_password").css("display", "block");
-							$('#password_success').text(message);
+							toastr.success(message, 'Success');
+							// $("#success_password").css("display", "block");
+							// $('#password_success').text(message);
 							$("#old_password").val('');
 							$("#new_password").val('');
 							$("#confirm_password").val('');
@@ -2337,8 +2334,9 @@ function change_password() {
 
 				}
 			} else if (status == 'false') {
-				$("#old_pass_error").addClass("errormsg my_account-error");
-				$('#old_pass_error').text(message);
+				// $("#old_pass_error").addClass("errormsg my_account-error");
+				// $('#old_pass_error').text(message);
+				toastr.error(message, 'Error');
 				$('#new_pass_error,#confirm_pass_error').removeClass("errormsg my_account-error");
 				$('#new_pass_error,#confirm_pass_error').text('');
 
@@ -2496,10 +2494,11 @@ function regenrate_ticket(bookind_id)
 				var getdata = jQuery.parseJSON(data);
 				var status = getdata.status;
 				var message = getdata.message; 
+				toastr.success(getdata.message,"Success");
 				$("#succes_span"+bookind_id).css("display","block");
 				setTimeout(function(){
-  $("#succes_span"+bookind_id).css("display","none");
-}, 5000);
+  					$("#succes_span"+bookind_id).css("display","none");
+				}, 2000);
 					/*
 					$("#ticket_popup").modal();
 										$("#booking_id").html(bookind_id);
@@ -2572,17 +2571,16 @@ function delete_saved_card(save_card_id)
 				var getdata = jQuery.parseJSON(data);
 				var status = getdata.status;
 				var message = getdata.message; 
-				$("#delete_success").text(message);
-				$("#success_delete").css("display","block");
-				setTimeout(function(){
- $("#success_delete").css("display","none");
-location.href=BaseUrl+"Save-Cards";
-}, 1000);
-					/*
-					$("#ticket_popup").modal();
-										$("#booking_id").html(bookind_id);
-										$("#genrate_response").html(message);*/
-			}
+				
+				//$("#delete_success").text(message);
+				//$("#success_delete").css("display","block");
+				setTimeout(function()
+				{
+ 					//$("#success_delete").css("display","none");
+					location.href=BaseUrl+"Save-Cards";
+					}, 1000);
+				toastr.success("Your Card Deleted Successfully","Success");
+				}
 		});
 }else {
 	return false;

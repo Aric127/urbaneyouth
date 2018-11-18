@@ -3737,7 +3737,7 @@ $this->recharge_mail($recharge_user_id,$operator_id,$recharge_number,$payment_tr
 				$post = array('status' => "false", "message" => "Invalid promocode2");
 			}
 		} else {
-			$post = array('status' => "false", "message" => "Invalid promocode1");
+			$post = array('status' => "false", "message" => "Please Enter Promocode");
 		}
 		echo $this -> json($post);
 	}
@@ -9681,9 +9681,10 @@ function save_cards()
 	$expiry_year	=	$_REQUEST['expiry_year'];
 	$cvv_no			=	$_REQUEST['cvv_no'];
 	$card_type		=	isset($_REQUEST['card_type']) && $_REQUEST['card_type'] != '' ? $_REQUEST['card_type'] : 2;
-	 $token=$this->create_token_moneywave();
+	  $token=$this->create_token_moneywave();
 	if(!empty($token)){
 		$result=$this->save_card_details($card_no,$expiry_month,$expiry_year,$cvv_no,$token,$user_id,$card_type);
+
 		return $result;
 	}else{
 		$result="Error in creating token";

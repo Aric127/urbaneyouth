@@ -6,6 +6,7 @@
             <div class="trans-head-div">
                 <h2><i class="icon-user"></i>My Account</h2>
             </div>
+           
             <div class="col-sm-12 col-xs-12 ">
                 <div class="tabbable-panel ">
                     <div class="tabbable-line my-accoun">
@@ -60,6 +61,8 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <img src="<?php if(!empty($my_profile->qr_code)){ echo $my_profile->qr_code; } else { echo base_url('wassets/images/my-profile-patten.png'); }?>" width="60%" class="center-block qr-code-box">
+
+                                    <!-- <button class="btn btn-success btn-small">Share</button> -->
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab_default_2">
@@ -99,7 +102,7 @@
                                 <div class="col-sm-1 col-xs-12">
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
-                                    <img src="https://oyacharge.com/wassets/images/change-pass-patten.png" width="60%" class="center-block">
+                                    <img src="<?php echo base_url('wassets/images/change-pass-patten.png');?>" width="60%" class="center-block">
                                 </div>
 
                             </div>

@@ -97,7 +97,7 @@
                                    
                                     <div class="form-group">
                                         <label for="usr">Account Number</label>
-                                        <input class="form-control" id="user_ac_no" placeholder="Enter Account Number" name="user_ac_no" required="" value="" type="text" onblur="validate_account_number()">
+                                        <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" id="user_ac_no" placeholder="Enter Account Number" name="user_ac_no" required="" value="" type="text" onblur="validate_account_number()">
                                     </div>
                                    <div class="form-group">
                                         <label for="usr">Account Holder's Name</label>
@@ -110,7 +110,7 @@
                                     </div> -->
                                      <div class="form-group">
                                         <label for="usr">Amount</label>
-                                        <input class="form-control" id="transfer_amount" placeholder="Enter Amount" name="transfer_amount" required="" value="" type="text">
+                                        <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" id="transfer_amount" placeholder="Enter Amount" name="transfer_amount" required="" value="" type="text">
                                     </div>
                                      
                                 </div>
@@ -188,10 +188,12 @@
 
     function validate_account_number()
     {
+        
        var account_no  = $("#user_ac_no").val();
        var bank_code   = $("#user_bank_code").val();
        if(account_no!='' && bank_code!='')
        {
+        toastr.warning("Please Wait. We fetching your bank account details", 'Warning');
         $.ajax({
             url : '<?php echo base_url('web/validate_account_number') ?>',
 
@@ -203,13 +205,15 @@
             },
             success : function(data) { 
                 var getdata = jQuery.parseJSON(data);
-                var status = getdata.status; 
+                var status = getdata.status;  
                 var message = getdata.message; 
                     if(status=='true')
                     {
                         $("#account_holder_name").val(getdata.name);
                     }else{
-                        $("#account_holder_name").text(getdata.message);
+                        $("#user_ac_no,#user_bank_code").css("colro","red");
+                       toastr.error(message, 'Error');
+                      
                     }
             }
         });

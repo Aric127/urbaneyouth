@@ -368,6 +368,7 @@ if(new_mpin!=confirm_mpin)
 }
  
 }
+
 </script>
 </body>
  <div class="modal fade" id="invoice_excel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

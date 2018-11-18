@@ -13,9 +13,7 @@
 
         <?php } ?>
           <div class="container-fluid">
-             <div class="col-sm-2">
-               <button class="btn btn-primary btn-block" onclick="md.showNotification('bottom','right')">Bottom Right</button>
-             </div>
+             
              <div class="row">
                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">

@@ -142,10 +142,10 @@ function quick_pay()
 					$result = $this -> login_model -> insert_data('user_feedbacks', $data);
 					if(!empty($result))
 					{
-						$this->toastr->success("Thanks for contact us.. we will shortly contact you.");
+						$this->toastr->success("Thanks for contact us.. we will shortly contact you.","Success");
 						//	 $this->session->set_flashdata('status', "Thanks for contact us.. we will shortly contact you.");
 					}else {
-						$this->toastr->error("Have Some Technical issue. Please try after some time.");
+						$this->toastr->error("Have Some Technical issue. Please try after some time.","Error");
 						//$this->session->set_flashdata('error', $message);
 					}
 					

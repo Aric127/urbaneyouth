@@ -184,7 +184,7 @@
             </a>
             
           </li>
-          <li<?php if($this->uri->segment(2) == 'my_bill_sattlement'){ ?> class="opened active"
+          <li <?php if($this->uri->segment(2) == 'my_bill_sattlement'){ ?> class="opened active"
                                             <?php } ?>  class="nav-item ">
             <a class="nav-link" href="javascript:void(0);">
               
@@ -193,7 +193,7 @@
             </a>
           
           </li>
-         <li<?php if($this->uri->segment(2) == 'product_list'){ ?> class="opened active"
+         <li <?php if($this->uri->segment(2) == 'product_list'){ ?> class="opened active"
                                             <?php } ?> class="nav-item ">
             <a class="nav-link" href="javascript:void(0);">
               

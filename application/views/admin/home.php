@@ -22,7 +22,7 @@
                    </div>
                    <div class="xe-label">
                        <strong class="num">1</strong>
-                              <span style="font-size: 12px">Wallet</span>
+                              <span style="font-size: 12px">Wallet12212</span>
                    </div>
                </div>
            </div>

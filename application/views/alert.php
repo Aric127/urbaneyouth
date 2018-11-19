@@ -6,6 +6,7 @@
 
 
     <?php if ($this->session->flashdata('success')) {?>
+       
         toastr.success("<?php echo $this->session->flashdata('success'); ?>");
     <?php } else if ($this->session->flashdata('error')) {?>
         toastr.error("<?php echo $this->session->flashdata('error'); ?>");

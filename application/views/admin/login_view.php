@@ -30,7 +30,7 @@
 	<![endif]-->
 
 </head>
-
+<?php $this->load->view('alert'); ?>
 <body class="page-body  login-body">
 <div class="login-over">
 

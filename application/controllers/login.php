@@ -9,6 +9,7 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('email');
         $this->load->library('session');
+        $this->load->library('toastr');
         if ($this->session->userdata('userid') == TRUE) {
             redirect('admin');
         }
@@ -27,6 +28,7 @@ class Login extends CI_Controller {
                 $where = array('admin_email'=>  $this->input->post('user_email'),'admin_password'=>  md5($this->input->post('user_password')));
                 $admin_details = $this->login_model->get_record_where($user_table,$where);
                 if($admin_details == FALSE){
+                    $this->toastr->success("Invalid Email or Password.","Error");
                     $data['error'] = 'Invalid Email or Password';
                     $this->load->view('admin/login_view',$data);
                 } else {

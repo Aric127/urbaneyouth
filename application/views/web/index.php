@@ -412,7 +412,7 @@ $(function () {
                                 <div class="form-group mo-m-o clearfix">
                                     <div class="col-sm-6">
                                     	<input type="hidden" value="1" id="mobile_type" readonly="readonly">
-                                        <input type="text" class="form-control" placeholder="Enter your 11 digit mobile no" id="mobileno" value="" autocomplete="off">
+                                        <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" type="text" class="form-control" placeholder="Enter your 11 digit mobile no" id="mobileno" value="" autocomplete="off">
                                         <input type="hidden" id="rec_category" value="">
                                         <div class="icn"><img src="<?php echo base_url('wassets/images/mobile_number.png');?>"> </div>
                                          <span id="mob_num_error"></span>
@@ -1958,6 +1958,7 @@ localStorage.setItem("mobileno","");
 	location.href = home_url +"web/logout";
 	 localStorage.clear();
 }
+
         </script>
         
 

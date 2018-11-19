@@ -11256,6 +11256,7 @@ function search_biller()
 				  $prod_barcode = $v['product_barcode'];
 				  $product_qty  = $v['product_qty'];
 				  $prod_price   = $v['product_price'];
+				  $prod_price = str_replace(',', '', $prod_price);
 				  $discount     = $v['product_discount']."% off";
 				  $prod_discount= $v['product_discount'];
 				  $product_desc = $v['product_desc'];

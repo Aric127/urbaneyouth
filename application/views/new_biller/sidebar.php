@@ -146,7 +146,7 @@
        <?php  }else{  ?>
          <li <?php if($this->uri->segment(1) == 'Invoice' || $this->uri->segment(2) == 'add_consumer_list'|| $this->uri->segment(2) == 'edit_consumer_list'){ ?> class="opened active"
                                 <?php } ?> class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               <i class="material-icons">description</i>
               <p> Invoice
                <b class="caret"></b>
@@ -155,7 +155,7 @@
              <div class="collapse" id="componentsExamples">
               <ul class="nav">
                 <li class="nav-item list_one">
-                  <a class="nav-link" href="javascript:void(0);">
+                  <a class="nav-link" href="javascript:void(0);" >
                     
                     <span class="sidebar-normal"> invoice list
                      
@@ -176,7 +176,7 @@
          </li>
            <li <?php if($this->uri->segment(1) == 'Consumer'){ ?> class="opened active"
                                 <?php } ?> class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               <i class="material-icons">supervisor_account</i>
               <p> Consumers
               
@@ -184,18 +184,18 @@
             </a>
             
           </li>
-          <li <?php if($this->uri->segment(2) == 'my_bill_sattlement'){ ?> class="opened active"
+          <li<?php if($this->uri->segment(2) == 'my_bill_sattlement'){ ?> class="opened active"
                                             <?php } ?>  class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               
              <i class="material-icons">swap_horiz</i>
               <p> Settlement</p>
             </a>
           
           </li>
-         <li <?php if($this->uri->segment(2) == 'product_list'){ ?> class="opened active"
+         <li<?php if($this->uri->segment(2) == 'product_list'){ ?> class="opened active"
                                             <?php } ?> class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               
                <i class="material-icons">games</i>
               <p> Products</p>
@@ -203,7 +203,7 @@
              
           </li>
           <li <?php if($this->uri->segment(2) == 'configuiration'){ ?> class="opened active"<?php } ?> class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               
                <i class="material-icons">games</i>
               <p> Configuiration</p>

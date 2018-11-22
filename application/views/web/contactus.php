@@ -1,3 +1,4 @@
+
 <div class="contact-us-wrap">
   <div class="container">
      <div class="row">
@@ -54,28 +55,37 @@
 <section class="section bg-light shadow-md pt-4 pb-3" style="background-color: #eee">
       <div class="container">
         <div class="row">
+        	<?php //print_r($contact_us_data);
+        		foreach($contact_us_data as $data){
+        	 ?>
+
           <div class="col-sm-6 col-md-4">
             <div class="featured-box text-center">
               <div class="featured-box-icon"> <i class="fa fa-phone"></i> </div>
               <h4>24/7 Contact</h4>
-              <p>+234 - 8076197654</p>
+              <p><?php echo $data->contact_number; ?></p>
+             <!--  <p>+234 - 8076197654</p> -->
             </div>
           </div>
           <div class="col-sm-6 col-md-4">
             <div class="featured-box text-center">
               <div class="featured-box-icon"> <i class="fa fa-envelope-o"></i> </div>
               <h4>Email</h4>
-              <p>care@oyacharge.com </p>
+              <p><?php echo $data->contact_email; ?></p>
+              <!-- <p>care@oyacharge.com </p> -->
             </div>
           </div>
           <div class="col-sm-6 col-md-4">
             <div class="featured-box text-center">
               <div class="featured-box-icon"> <i class="fa fa-map-marker"></i> </div>
               <h4>Address</h4>
-              <p>8B, Lalupon close, Ikoyi Lagos </p>
+              <p><?php echo $data->contact_address; ?></p>
+             <!--  <p>8B, Lalupon close, Ikoyi Lagos </p> -->
             </div>
           </div>
-      
+      	<?php 
+      		}
+      	?>
         </div>
       </div>
     </section>

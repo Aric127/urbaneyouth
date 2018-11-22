@@ -1,14 +1,40 @@
-<div class="about-wrap">
-	<div class="container">
-		<div class="jumbotron text-center">
-		<h3>About Oyacharge</h3>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-		<p> when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	</div>
 
+<div class="about-wrap">
+  <div class="container">
+    <?php  
+        foreach($about_us_data as $data){  
+    ?>
+    <div class="jumbotron text-center">
+     <?php
+           echo $data->about_us_content; 
+           echo $data->website_content;
+      ?>
+	</div>
+  <?php
+      }
+  ?>
+<div class="slideshow-container">
+    <div class="col-md-3"></div>
+    <div >
+       <?php  
+        foreach($about_us_data as $data){  
+      ?>
+      <iframe autoplay="false" width="560" height="315" src="<?php echo $data->about_us_video; ?>" frameborder="0" allowfullscreen></iframe>
+      <?php         
+        }
+      ?>
+    </div>
+
+
+</div>
 	<div class="ouvepartenr">
-		<h3 class="text-center about-head-line">Our Partner</h3> 
+		<h3 class="text-center about-head-line">Our Services</h3> 
+      <?php //print_r($about_us_operator);
+      //foreach($about_us_operator as $operator_data){
+        //echo $operator_data->operator_image;
+        ?>
+        <!-- <img src="/uploads/operator/<?php echo $operator_data->operator_image; ?>"> -->
+        
 		 <section class="customer-logos slider">
       <div class="slide"><img src="<?php echo base_url('wassets/images/partner1.png');?>"></div>
       <div class="slide"><img src="<?php echo base_url('wassets/images/partner2.png');?>"></div>
@@ -24,32 +50,12 @@
       <div class="slide"><img src="<?php echo base_url('wassets/images/partner4.png');?>"></div>
       
    </section>
+   <?php
+    //  } ?>
 	</div>
 	</div>
 
-	<div class="slideshow-container">
-<h3 class="text-center about-head-line">Review</h3>
-<div class="mySlides">
-  <q>I love you the more in that I believe you had liked me for my own sake and for nothing else</q>
-  <p class="author">- John Keats</p>
-</div>
-
-<div class="mySlides">
-  <q>But man is not made for defeat. A man can be destroyed but not defeated.</q>
-  <p class="author">- Ernest Hemingway</p>
-</div>
-
-<div class="mySlides">
-  <q>I have not failed. I've just found 10,000 ways that won't work.</q>
-  <p class="author">- Thomas A. Edison</p>
-</div>
-
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
-
-</div>
- 
-
+	
 
 </div>
 

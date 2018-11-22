@@ -16,8 +16,9 @@
   <!-- CSS Files -->
   <link href="<?php echo base_url('biller_assets/css/material-dashboard.css?v=2.0.2');?>" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <link href="<?php echo base_url('biller_assets/demo/demo.css');?>" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
 <body class="">

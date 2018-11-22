@@ -115,7 +115,7 @@
           <?php }else{ ?>
           <li<?php if($this->uri->segment(2) == 'church_product_list'){ ?> class="opened active"
                                             <?php } ?> class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')"> 
               
                <i class="material-icons">games</i>
               <p> Products</p>
@@ -136,7 +136,7 @@
           </li>
           <li class="nav-item " <?php if($this->uri->segment(2) == 'branch_list'){ ?> class="opened active"
                                             <?php } ?>>
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               <i class="material-icons">description</i>
               <p> Branches
                
@@ -161,7 +161,7 @@
       
           <li<?php if($this->uri->segment(2) == 'donation_list'){ ?> class="opened active"
                                             <?php } ?>  class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               
              <i class="material-icons">swap_horiz</i>
               <p> Donation</p>
@@ -180,7 +180,7 @@
             </div>
           </li>
         <li <?php if($this->uri->segment(2) == 'configuiration'){ ?> class="opened active"<?php } ?> class="nav-item ">
-            <a class="nav-link" href="javascript:void(0);">
+            <a class="nav-link" href="javascript:void(0);" onclick="show_notification('info','Please Complete your profile')">
               
                <i class="material-icons">games</i>
               <p> Configuiration</p>

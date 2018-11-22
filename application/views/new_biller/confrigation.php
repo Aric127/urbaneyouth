@@ -72,21 +72,11 @@
                         
                          <div class="form-group" style="margin-top: 30px;">
                           <label class="bmd-label-floating">% Charge Transaction</label>
-                          <input type="text" class="form-control" name="agent_margin" id="agent_margin" value="<?php echo $biller_config[0]->agent_margin; ?>" readonly="readonly" style="    margin-top: 15px!important;
-    float: left;">
+                          <input type="text" class="form-control" name="agent_margin" id="agent_margin" value="<?php echo $biller_config[0]->agent_margin; ?>" readonly="readonly" style="margin-top: 15px!important;">
                         </div>
                         
                       </div>
-                     
-                  
-                      
-                      <!-- <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control">
-                        </div>
-                      </div> -->
-                    </div>
+                     </div>
                   
                  
                     

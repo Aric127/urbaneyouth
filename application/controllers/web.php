@@ -33,7 +33,7 @@ var $mydata;
 		define('webpay_product_id',"6804");
 		define('webpay_url','https://webpay.interswitchng.com/paydirect/pay');
 		define('webpay_jsonurl','https://webpay.interswitchng.com/paydirect/api/v1/gettransaction.json');
-		date_default_timezone_set("Asia/Calcutta");
+		//date_default_timezone_set("Asia/Calcutta");
 		// Demo api key
 		//define('webpay_hashkey',"C8C24E816BD825584AB4B7CEAD1763E11B997EE0C8BEB6E9D0E7C40A6C95680CC1C49E8C9658195A53AF3A1B9AE2B11E1745E1D46854E6338851427E07C581A5");
 		//define('webpay_product_id',"4980");
@@ -99,8 +99,9 @@ function quick_pay()
 		$f_data['church'] 			= 	$this->church();
 		$f_data['biller_category'] 	= 	$this->biller_category();
 		$f_data['event_category'] 	= 	$this->event_category();
-		
+		$this->load->view('web/header',$f_data);
 		$this->load->view('web/index',$f_data);
+		 $this->load->view('web/footer');
         
     }
     function shareearn()
@@ -142,18 +143,19 @@ function quick_pay()
 					$result = $this -> login_model -> insert_data('user_feedbacks', $data);
 					if(!empty($result))
 					{
-						$this->toastr->success("Thanks for contact us.. we will shortly contact you.","Success");
+						$this->toastr->success("Thanks for contact us.. we will shortly contact you.");
 						//	 $this->session->set_flashdata('status', "Thanks for contact us.. we will shortly contact you.");
 					}else {
-						$this->toastr->error("Have Some Technical issue. Please try after some time.","Error");
+						$this->toastr->error("Have Some Technical issue. Please try after some time.");
 						//$this->session->set_flashdata('error', $message);
 					}
 					
 					redirect(base_url('ContactUs'));
 			}else
 			{
+				$data['contact_us_data'] = $this->login_model->get_column_data_where('contact_us');
 		    	$this->load->view('web/header');
-		        $this->load->view('web/contactus');
+		        $this->load->view('web/contactus',$data);
 		        $this->load->view('web/footer');
     		}
     }
@@ -1686,6 +1688,10 @@ function repeat_add_sms(){
  		$result=file_get_contents( base_url('webservices/api.php?rquest=about_us'));
 		$result=json_decode($result);
 		$data['about_us']=html_entity_decode($result->about_us);
+		$data['about_us_data'] = $this->login_model->get_column_data_where('about_us');
+		$where = array('operator_status' => '1');
+		$data['about_us_operator'] = $this->login_model->get_record_where('operator_list',$where);
+
 		$this->load->view('web/header');
         $this->load->view('web/about',$data);
         $this->load->view('web/footer',$f_data);
@@ -1697,6 +1703,8 @@ function repeat_add_sms(){
 				$f_data['footer'] = $this->footer();
 	 			$result=file_get_contents( base_url('webservices/api.php?rquest=contact_us'));
 				$data['result']=json_decode($result);
+				$data['contact_us_data'] = $this->login_model->get_column_data_where('contact_us');
+
 				$this->load->view('web/header');
 		        $this->load->view('web/contact_us',$data);
 		        $this->load->view('web/footer',$f_data);

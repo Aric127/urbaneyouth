@@ -287,9 +287,24 @@
  var old_password=document.getElementById("old_password").value;
  var new_password=document.getElementById("new_password").value;
  var confirm_password=document.getElementById("confirm_password").value;
+ if(old_password=='')
+ {
+   $("#res_msg").css('color','red');
+   $("#res_msg").text('Please Enter Old Password');
+ 
+ }else if(new_password==''){
+    $("#res_msg").css('color','red');
+   $("#res_msg").text('Please Enter New Password');
+ 
+ }else if(confirm_password==''){
+  $("#res_msg").css('color','red');
+   $("#res_msg").text('Please Enter Confirm Password');
+ 
+ }else
 if(new_password!=confirm_password)
 {
   $("#res_msg").css('color','red');
+ 
   $("#res_msg").text("New password and confirm password mismatched");
 }else{
   $.ajax({
@@ -305,10 +320,12 @@ if(new_password!=confirm_password)
     {
       $("#res_msg").css('color','red');
       $("#res_msg").text(obj.message);
+      show_notification('error',obj.message);
     }else{
       $("#res_msg").css('color','green');
       $("#res_msg").text(obj.message);
       $("#old_password,#new_password,#confirm_password").val('');
+      show_notification('success',obj.message);
       setInterval(function(){ 
        location.reload();
          }, 2000);
@@ -368,8 +385,29 @@ if(new_mpin!=confirm_mpin)
 }
  
 }
-
 </script>
+<script type="text/javascript">
+              function show_notification(status,mesg)
+              {
+                if(status=='success')
+                {
+                  toastr.success(mesg,'Success');
+                }else 
+                if(status=='error')
+                {
+                  toastr.error(mesg,'Error');
+                }else 
+                if(status=='warning')
+                {
+                  toastr.warning(mesg,'Warning');
+                }else 
+                if(status=='info')
+                {
+                  toastr.info(mesg,'Info');
+                }
+                
+              }
+             </script>
 </body>
  <div class="modal fade" id="invoice_excel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-notice">
@@ -502,12 +540,12 @@ if(new_mpin!=confirm_mpin)
                             <div class="modal-body">
                              
                                 <div class="form-group bmd-form-group">
-                                  <label for="exampleEmail" class="bmd-label-floating">New MPIN </label>
-                                  <input type="password" class="form-control" id="new_mpin" name="old_password" required="required">
+                                  <label for="exampleEmail" class="bmd-label-floating">Enter 4 Digit MPIN </label>
+                                  <input type="password" class="form-control" id="new_mpin" name="old_password" required="required" minlength="4" maxlength="4" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                                 </div>
                                 <div class="form-group bmd-form-group">
-                                  <label for="examplePass" class="bmd-label-floating">Confirm MPIN</label>
-                                  <input type="password" class="form-control" id="confirm_mpin" name="new_password" required="required">
+                                  <label for="examplePass" class="bmd-label-floating">Confirm 4 Digit MPIN</label>
+                                  <input type="password" class="form-control" id="confirm_mpin" name="new_password" required="required" minlength="4" maxlength="4" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                                 </div>
                                  
                                 <div class="card-footer" style="padding-left: 0;">

@@ -52,17 +52,21 @@ class Biller_login extends CI_Controller {
                      }
                      	if($admin_details[0]->email_verify_status==2)
 	                	{
-	                	  $message = "Please Verife your Email. check your email for activation link.";
+	                	  $message = "Email verification link sent to your email. please verify your email account.";
+                          $message='';
                           $biller_status12=2;
+                          $verifyStatus=1;
 	                	}else
 	                	if(empty($admin_details[0]->bank_code))
 	                	{
 	                	  $message = "Please complete your profile for admin review and approval.";
                           $biller_status12=2;
+                          $verifyStatus=2;
 	                	}elseif($admin_details[0]->biller_status==2)
 	                	{
 	                		 $message = "Your account is in under review of admin. Please wait for admin approval.!";
                              $biller_status12=2;
+                             $verifyStatus=2;
 	                   }else{
 	                   	if($admin_details[0]->verify_msg_read_status==2)
 						{
@@ -71,9 +75,11 @@ class Biller_login extends CI_Controller {
                     		$data21['verify_msg_read_status']=1;
                      		$this->login_model->update_data('biller_details', $data21, $where_user);
                             $biller_status12=2;
+                            $verifyStatus=2;
 						}else{
 							$message ='';
                             $biller_status12=1;
+                            $verifyStatus=2;
 						}
 					  }
                     
@@ -81,15 +87,15 @@ class Biller_login extends CI_Controller {
                 	 $biller_type= $admin_details[0]->biller_type;
                      if($biller_type==1)
                     {
-                        $this->session->set_userdata(array('biller_id'=>$admin_details[0]->biller_id,'biller_email'=>$admin_details[0]->biller_email,'biller_status'=>$admin_details[0]->biller_status,'user_id'=>$biller_details[0]->user_id,'approve_status'=>$biller_status12)); 
+                        $this->session->set_userdata(array('biller_id'=>$admin_details[0]->biller_id,'biller_email'=>$admin_details[0]->biller_email,'biller_status'=>$admin_details[0]->biller_status,'user_id'=>$biller_details[0]->user_id,'approve_status'=>$biller_status12,'verifyStatus'=>$verifyStatus,'biller_username'=>$admin_details[0]->biller_name)); 
                         redirect('biller');
                     }else if($biller_type==2)
                     {
-                        $this->session->set_userdata(array('church_biller_id'=>$admin_details[0]->biller_id,'biller_email'=>$admin_details[0]->biller_email,'biller_status'=>$admin_details[0]->biller_status,'user_id'=>$biller_details[0]->user_id,'approve_status'=>$biller_status12)); 
+                        $this->session->set_userdata(array('church_biller_id'=>$admin_details[0]->biller_id,'biller_email'=>$admin_details[0]->biller_email,'biller_status'=>$admin_details[0]->biller_status,'user_id'=>$biller_details[0]->user_id,'approve_status'=>$biller_status12,'verifyStatus'=>$verifyStatus,'biller_username'=>$admin_details[0]->biller_name)); 
                         redirect('church');
                     }else if($biller_type==3)
                     {
-                        $this->session->set_userdata(array('event_biller_id'=>$admin_details[0]->biller_id,'biller_email'=>$admin_details[0]->biller_email,'biller_status'=>$admin_details[0]->biller_status,'user_id'=>$biller_details[0]->user_id,'approve_status'=>$biller_status12)); 
+                        $this->session->set_userdata(array('event_biller_id'=>$admin_details[0]->biller_id,'biller_email'=>$admin_details[0]->biller_email,'biller_status'=>$admin_details[0]->biller_status,'user_id'=>$biller_details[0]->user_id,'approve_status'=>$biller_status12,'verifyStatus'=>$verifyStatus,'biller_username'=>$admin_details[0]->biller_name)); 
                         redirect('event');
                     }
                     
@@ -261,6 +267,24 @@ function get_user_details()
     }
 
   }
+  function send_verficaion_link()
+  {
+    header("Access-Control-Allow-Origin: *");
+    $username   = $_REQUEST['user_name'];
+    $useremail  = $_REQUEST['user_email'];
+    if(!empty($username) && !empty($useremail))
+    {
+        $this->send_verification_mail($username,$useremail);
+         //$message = "Email verification link sent to your email. please verify your email account.";
+         $status= 'true';
+    }else{
+       //  $message = "Some technial issue to resend mail link. please try again";
+          $status= 'false';
+    }
+    echo $status;
+    // $post = array('status'=>$status,'message'=>$message);
+    // echo json_encode($post);
+  }
     function send_verification_mail($user_name,$user_email)
     {
         $path = base_url('biller_login');
@@ -319,6 +343,7 @@ function get_user_details()
 </html>';
 
        $this->sendElasticEmail($user_email, $subject,"OyaCharge", $mail_msg, "care@oyacharge.com", "OyaCharge",'');
+       
     }
 
     function sendElasticEmail($to, $subject, $body_text, $body_html, $from, $fromName,$attachments)

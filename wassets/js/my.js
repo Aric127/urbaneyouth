@@ -388,16 +388,13 @@ function user_login()
 //Logout
 function Logout()
 {
-	if(confirm('Are you sure, You want logout?'))
-	{
-
-		localStorage.setItem("mobileno","");
+	    localStorage.setItem("mobileno","");
 		localStorage.setItem("mobileno","");
 		localStorage.setItem("rec_category",'');
 		localStorage.setItem("wt_category",'');
 		localStorage.clear();
 		location.href = home_url +"logout";
- }
+ 
 }
 function check_signup_number() {
 	var user_mobile = $("#user_mobile_no").val();
@@ -570,6 +567,12 @@ function signup_user() {
 	var reffer_code = $("#reffer_code").val();
 	var user_email = $("#user_email").val();
 	var user_password = $("#user_pass").val();
+	 if (user_email == '') {
+		$("#signup_mob_error").removeClass("errormsg");
+		$("#signup_mob_error").text('');
+		$("#signup_email_error").addClass("errormsg");
+		$("#signup_email_error").text('Please Enter email account');
+	} else
 	if (user_mobile == '') {
 		$("#signup_mob_error").addClass("errormsg");
 		$("#signup_mob_error").text('Please Enter Mobile Number');
@@ -580,12 +583,7 @@ function signup_user() {
 		$("#signup_mob_error").addClass("errormsg");
 		$("#signup_mob_error").text('Please Enter a 11 digit number');
 	}
-	else if (user_email == '') {
-		$("#signup_mob_error").removeClass("errormsg");
-		$("#signup_mob_error").text('');
-		$("#signup_email_error").addClass("errormsg");
-		$("#signup_email_error").text('Please Enter email account');
-	} 
+	
 	else if (user_password.length < 4 || user_password.length >4) {
 		$("#signup_mob_error").removeClass("errormsg");
 		$("#signup_mob_error").text('');

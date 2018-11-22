@@ -24,8 +24,6 @@
       <link href="<?php echo base_url('wassets/css/bootstrap-responsive-tabs.css');?>" rel="stylesheet">
       <link href="<?php echo base_url('wassets/css/owl.carousel.css');?>" rel="stylesheet">
       <link href="<?php echo base_url('wassets/css/bootstrap-select.css');?>" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
       <!--<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100,300,400,500,700,900" rel="stylesheet">-->
       <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100,300,400,500,700,900|Roboto:100,300,400,500,700" rel="stylesheet">
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -134,27 +132,7 @@
                   </a>
 
                 </li>
-                <!-- <li>
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <img src="https://oyacharge.com/wassets/images/sms-management.png" width="28">
-                        <p>SMS Management</p>
-                      </figure>
-                    </div>
-                  </a>
-
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <i class="icon-key"></i>
-                        <p>Change Password</p>
-                      </figure>
-                    </div>
-                  </a>
-                </li> -->
+                
                 <li>
                   <a onclick="Logout()" title="Logout" href="#">
                     <div class="inner-heading-m">
@@ -179,69 +157,6 @@
          });
 </script>
 
-
-
-
-             <!--<div class="menu-head-b clearfix col-sm-12 col-md-12 col-xs-12">
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <i class="icon-home"></i>
-                        <p>Home</p>
-                      </figure>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <i class="icon-user"></i>
-                        <p>My Account</p>
-                      </figure>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <img src="https://oyacharge.com/wassets/images/my-transaction.png"  width="28">
-                        <p>My Transactions</p>
-                      </figure>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <i class="icon-wallet"></i>
-                        <p>Wallet</p>
-                      </figure>
-                    </div>
-                  </a>
-                   <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <img src="https://oyacharge.com/wassets/images/sms-management.png" width="28">
-                        <p>SMS Management</p>
-                      </figure>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <i class="icon-key"></i>
-                        <p>Change Password</p>
-                      </figure>
-                    </div>
-                  </a>
-                  <a onclick="Logout()" title="Logout" href="#">
-                    <div class="inner-heading-m">
-                      <figure>
-                        <i class="icon-logout"></i>
-                        <p>Logout</p>
-                      </figure>
-                    </div>
-                  </a>
-              </div>-->  <!--menu-head-b-->
             </div><!--row-->
             </div><!--cont-->
 </div><!--cont-fluid-->
-
-<!-------------------------Header-menu End------------------------>

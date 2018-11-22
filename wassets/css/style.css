@@ -6760,3 +6760,7 @@ h3.text-center.about-head-line {
 .address-box p a {
     color: yellow;
 }
+
+#viewPlanmobile .modal-dialog {
+    margin: 10px!important;
+}

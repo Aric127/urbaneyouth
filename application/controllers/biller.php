@@ -12,8 +12,7 @@ class Biller extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('email');
-        $this->load->library('pdf_genrator/mpdf');
-        $this->load->library('toastr');
+    	  $this->load->library('pdf_genrator/mpdf');
          define('company_logo', base_url('uploads/biller_company_logo/'));
     	   define('bill_invoice', base_url('uploads/bill_invoice/'));
          define('invoice', base_url('uploads/invoice/'));
@@ -370,11 +369,9 @@ function uploadAttachment($filepath, $filename) {
   }
   function update_biller_info()
   {
-  
     if($this->input->post('finish'))
     {
       $data = $this->input->post();
-    
       $data12['biller_name']          = $data['biller_name'];
       $data12['biller_email']         = $data['biller_email'];
       $data12['biller_company_name']  = $data['biller_company_name'];
@@ -411,9 +408,9 @@ function uploadAttachment($filepath, $filename) {
                    move_uploaded_file($_FILES['biller_company_logo']['tmp_name'], "./uploads/biller_company_logo/" . $file_name);
                     $imagename = $file_name;
                      $source_image = "uploads/biller_company_logo/".$file_name;
-			 		            $this->make_thumb($source_image,$source_image,'400');
+			 		$this->make_thumb($source_image,$source_image,'400');
                 } else {
-                  $this->toastr->error('Invalid Image ty',"Error");
+                    $this->session->set_flashdata('error', 'Invalid Image type');
                     redirect('biller/biller_profile');
                 }
                 $data12['biller_company_logo']=$imagename;
@@ -432,7 +429,7 @@ function uploadAttachment($filepath, $filename) {
                    move_uploaded_file($_FILES['biller_document']['tmp_name'], "./uploads/biller_company_logo/" . $file_name1);
                     $imagename1 = $file_name1;
                 } else {
-                   $this->toastr->error('Invalid Image ty',"Error");
+                    $this->session->set_flashdata('error', 'Invalid Image type');
                     redirect('biller/biller_profile');
                 }
                 $data12['biller_document']=$imagename1;
@@ -445,10 +442,9 @@ function uploadAttachment($filepath, $filename) {
           $biller_status  = $billerDetals[0]->biller_status;
           if($biller_status==2)
           {
-           $this->toastr->success('Your profile is successfully submitted.! Please wait for admin review and approval !',"Success");
+          	$this -> session -> set_flashdata('success', 'Your profile is successfully submitted.! Please wait for admin review and approval !');
           }else{
-            $this->toastr->success('Your profile is successfully updated.!',"Success");
-         
+          	$this -> session -> set_flashdata('success', 'Your profile is successfully updated.!');
           }
        
       redirect('biller/biller_profile');

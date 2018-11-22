@@ -13,6 +13,19 @@
 
         <?php } ?>
           <div class="container-fluid">
+              <?php if($this->session->userdata('verifyStatus')==1)
+            { ?>
+              <div class="alert alert-default" style="background-color:#fcf8e3!important;border:1px solid #faebcc">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="line-height: 0.1;margin: 5px;" id="resend_linkbtn">
+                      <i class="material-icons"  style="color: #bbb;">close</i>
+                    </button>
+                    <span>Account confirmation is required please check your email for the confirmation link</span>
+                    <button onclick="send_resendmail()" class="btn btn-sm pull-right " style="margin-top: -24px;padding: 6px;right: 19px;">Resend Email</button>
+                  </div>
+                  
+           <?php } ?>
+                
+             <div class="clearfix"></div>
              <div class="row">
                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
@@ -326,3 +339,27 @@ chart21.render();
 
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+            function send_resendmail()
+            {
+              var path="<?php echo base_url('biller_login/send_verficaion_link') ?>";
+                var useremail ="<?php echo $this->session->userdata('biller_email'); ?>";
+                var username ="<?php echo $this->session->userdata('biller_username'); ?>";
+                  $.ajax({
+                        url: path,
+                        type: "POST",
+                        async: false,
+                        data: {
+                            'user_name': username,'user_email':useremail
+
+                        },
+                        success: function(data) 
+                        {
+                         
+                         $("#resend_linkbtn").click();
+                              show_notification('success','Email verification link sent to your email. please verify your email account.')
+                        }
+                    });
+                  }
+                
+</script>

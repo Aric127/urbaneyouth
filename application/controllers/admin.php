@@ -384,145 +384,121 @@ function caricon_api()
 
         if ($table == "user" && $function == "user_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Activity Status Change to InActive. ';
+                $message = 'User Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Activity Status Change to Active. ';
+                $message = 'User Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+          
+           
         }
         if ($table == "recharge_category" && $function == "recharge_category_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Activity Status Change to InActive. ';
+                $message = 'Recharge Category Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Activity Status Change to Active. ';
+                $message = 'Recharge Category Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+          
         }
         if ($table == "recharge_type" && $function == "recharge_type_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Activity Status Change to InActive. ';
+                $message = 'Recharge Type Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Activity Status Change to Active. ';
+                $message = 'Recharge Type Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+           
         }
         if ($table == "operator_list" && $function == "operator_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Activity Status Change to InActive. ';
+                $message = 'Operator Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Activity Status Change to Active. ';
+                $message = 'Operator Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+          
         }
         if ($table == "offer_coupon" && $function == "coupon_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Coupon Status Change to InActive. ';
+                $message = 'Coupon Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Coupon Status Change to Active. ';
+                $message = 'Coupon Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+           
         }
 		 if ($table == "free_coupon_list" && $function == "free_coupon_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Coupon Status Change to InActive. ';
+                $message = 'Coupon Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Coupon Status Change to Active. ';
+                $message = 'Coupon Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+          
         }
         if ($table == "biller_details" && $function == "biller_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Biller Status Change to InActive. ';
+                $message = 'Biller Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Biller Status Change to Active. ';
+                $message = 'Biller Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+           
         }
         if ($table == "about_us" && $function == "about_us") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Activity Status Change to InActive. ';
+                $message = 'Activity Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Activity Status Change to Active. ';
+                $message = 'Activity Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+           
         }
          if ($table == "biller_category" && $function == "biller_category") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Biller Category Status Change to InActive. ';
+                $message = 'Biller Category Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Biller Category Status Change to Active. ';
+                $message = 'Biller Category Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+            
         }
        
 		 if ($table == "free_coupon_category" && $function == "free_coupon_category") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Coupon Category Status Change to InActive. ';
+                $message = 'Coupon Category Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Coupon Category Status Change to Active. ';
+                $message = 'Coupon Category Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+           
         }
         if ($table == "recharge_plan" && $function == "plan_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Plan Status Change to InActive. ';
+                $message = 'Plan Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Plan Status Change to Active. ';
+                $message = 'Plan Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+            
         }
 		 if ($table == "plan_category" && $function == "plan_category") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Plan Category Status Change to InActive. ';
+                $message = 'Plan Category Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Plan Category Status Change to Active. ';
+                $message = 'Plan Category Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+            
         }
         if ($table == "skretch_card" && $function == "scratch_card") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Scratch Card Status Change to InActive. ';
+                $message = 'Scratch Card Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Scratch Card Status Change to Active. ';
+                $message = 'Scratch Card Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
-            $path = 'admin/' . $function;
-            redirect($path);
+           
         }
          if ($table == "agent_users" && $function == "agent_list") {
             if ($field_value != 1) {
-                $message = 'SUCCESS! Agent margin Status Change to InActive. ';
+                $message = 'Agent margin Status Change to InActive. ';
             } else {
-                $message = 'SUCCESS! Agent margin Status Change to Active. ';
+                $message = 'Agent margin Status Change to Active. ';
             }
-            $this->session->set_flashdata('status', $message);
+            
+        }
+        $this->toastr->success($message,"success");
             $path = 'admin/' . $function;
             redirect($path);
-        }
     }
 	function sendElasticEmail($to, $subject, $body_text, $body_html, $from, $fromName)
 	{
@@ -577,81 +553,71 @@ function caricon_api()
         $delete = $this->login_model->delete_record($delete_table, $delete_where);
         if ($delete == TRUE) {
             if ($delete_type == 'delete_user') {
-                $message = 'USer deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/user_list');
+                $message = 'User deleted successfully!!';
+                $path='admin/user_list';
+                
             }
             if ($delete_type == 'delete_category') {
                 $message = 'Category deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/recharge_category_list');
+                $path='admin/recharge_category_list';
+              
             }
             if ($delete_type == 'delete_recharge_type') {
                 $message = 'Recharge type deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/recharge_type_list');
+                $path='admin/recharge_type_list';
+               
             }
              if ($delete_type == 'delete_operator') {
                 $message = 'operator deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/operator_list');
+                $path='admin/operator_list';
+                
             }
              if ($delete_type == 'delete_coupon') {
                 $message = 'coupon deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/coupon_list');
+                 $path='admin/coupon_list';
+                
             }
 			  if ($delete_type == 'delete_free_coupon') {
                 $message = 'coupon deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/free_coupon_list');
+                $path='admin/free_coupon_list';
+                
             }
              if ($delete_type == 'delete_biller_category') {
                 $message = 'Biller category deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/biller_category');
+                 $path='admin/biller_category';
+                
             }
 			  if ($delete_type == 'delete_biller') {
                 $message = 'Biller deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/biller_list');
+                 $path='admin/biller_list';
+                
             }
             if ($delete_type == 'delete_free_coupon_category') {
                 $message = 'Coupon Category deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/free_coupon_category');
+                 $path='admin/free_coupon_category';
+                
             }
             if ($delete_type == 'delete_about_us') {
                 $message = 'Content deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/about_us');
+                 $path='admin/about_us';
+                
             }
    
              if ($delete_type == 'delete_recharge_plan') {
                 $message = 'Recharge Plan deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/plan_list');
+                 $path='admin/plan_list';
+                
             }
 			 if ($delete_type == 'delete_skretch_coupon') {
                 $message = 'Scratch card deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/scratch_card');
+                 $path='admin/scratch_card';
+                
             }
-            if ($delete_type == 'delete_brand_type') {
-                $message = 'Brand Type deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/brand_type_list');
-            }
-            if ($delete_type == 'delete_ideal_for') {
-                $message = 'Ideal for deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/ideal_for_list');
-            }
-			if ($delete_type == 'attribute_user') {
-                $message = 'Attribute deleted successfully!!';
-                $this->session->set_flashdata('error', $message);
-                redirect('admin/attribute_list');
-            }
+            
+            	$this->toastr->success($message,"Deleted");
+                redirect($path);
+			
+            
         } else {
             redirect();
         }
@@ -1742,6 +1708,14 @@ $where = array('free_coupon_category_status' => '1');
         }
     }
 
+
+   /* function user_message(){
+        $this->load->view('admin/menu');
+        $this->load->view('admin/header');
+        $this->load->view('admin/listing/user_message');
+        $this->load->view('admin/footer');
+    }*/
+
   function about_us(){
   	$where = array('about_us_status' =>1);
         $data['about_us'] = $this->login_model->get_data_where_condition('about_us',$where);
@@ -2018,11 +1992,15 @@ function biller_list(){
 			$where12=array('find_in_set(biller_category_id, "'.$biller_details[$i]->biller_category_id.'") '=>NULL);
 			
 			$biller_category = $this->login_model->get_data_where_condition('biller_category', $where12);
-			foreach($biller_category as $val)
+			if(!empty($biller_category))
 			{
-				$name[$i][]=$val->biller_category_name;
+				foreach($biller_category as $val)
+				{
+					$name[$i][]=$val->biller_category_name;
+				}
+				$data['biller_details'][$i]->category_name=implode(",",$name[$i]);
 			}
-	$data['biller_details'][$i]->category_name=implode(",",$name[$i]);
+			
 		
 		}
 		$this->load->view('admin/menu');

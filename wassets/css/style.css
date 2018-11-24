@@ -5283,8 +5283,10 @@ Licensed under MIT
   color: #737373;
   font-size: 19px;
 }
+ 
 .tabbable-line > .nav-tabs > li > a > i {
-  color: #a6a6a6;
+    color: #a6a6a6;
+    padding-right: 10px;
 }
 .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
       border-bottom: 2px solid #ffecb4;
@@ -6763,4 +6765,8 @@ h3.text-center.about-head-line {
 
 #viewPlanmobile .modal-dialog {
     margin: 10px!important;
+}
+.navbar.menu-head-b ul li:hover {
+    background-color: #1d6998!important;
+    transition: background-color 0.9s ease;
 }

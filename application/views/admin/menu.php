@@ -414,6 +414,12 @@
             
         </ul> -->
     </li>
+    <!-- <li <?php if($this->uri->segment(2) == 'user_message'){ ?>class="opened active"<?php } ?>>
+        <a href="<?php echo site_url('admin/user_message'); ?>">
+            <i class="fa fa-info-circle"></i>
+            <span class="title">User Message</span>
+        </a>
+    </li>  -->
      <li <?php if($this->uri->segment(2) == 'feedback'){ ?>class="opened active"<?php } ?>>
         <a href="<?php echo site_url('admin/contact_us'); ?>">
             <i class="fa fa-cart-arrow-down"></i>

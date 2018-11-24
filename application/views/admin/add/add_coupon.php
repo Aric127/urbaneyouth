@@ -90,7 +90,7 @@
             
             </div>
 
-           <!--  <div class="form-group">
+          <!--   <div class="form-group">
                 <label class="control-label">Coupon Image</label>
                 <input type="file" name="coupon_image" class="form-control" >
             </div> -->

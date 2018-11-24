@@ -56,7 +56,7 @@
 </div>
 </header>
 
-     
+     <?php $this->load->view('alert'); ?>
 
 <div class="main-content">
  <!--<nav class="navbar user-info-navbar"  role="navigation">	

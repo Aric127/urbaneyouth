@@ -12,7 +12,7 @@ class Biller extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('email');
-    	  $this->load->library('pdf_genrator/mpdf');
+    	 @$this->load->library('pdf_genrator/mpdf');
          define('company_logo', base_url('uploads/biller_company_logo/'));
     	   define('bill_invoice', base_url('uploads/bill_invoice/'));
          define('invoice', base_url('uploads/invoice/'));
@@ -199,7 +199,13 @@ function uploadAttachment($filepath, $filename) {
       $data['oyawallet']=$this->login_model->get_simple_query($sql_wallet); 
       $sql_consumner="SELECT biller_customer_id_no FROM `biller_user` where biller_id='".$biller_id."' group by biller_customer_id_no";
        $consumner_count=$this->login_model->get_simple_query($sql_consumner); 
-       $data['count_consumer'] = count($consumner_count);
+       if(!empty($consumner_count))
+       {
+        $data['count_consumer'] = count($consumner_count);
+       }else{
+        $data['count_consumer'] = 0;
+       }
+     
        $weeekly_invoice ="SELECT count(*) as invoice_count,bill_invoice_date from biller_user WHERE YEARWEEK(`bill_invoice_date`, 1) = YEARWEEK(CURDATE(), 1) and biller_id='".$biller_id."' group by bill_invoice_date";
        $data['week_invoice_count']=$this->login_model->get_simple_query($weeekly_invoice);
          $weeekly_invoice ="SELECT sum(bill_amount) as invoice_amount,bill_invoice_date from biller_user WHERE YEARWEEK(`bill_invoice_date`, 1) = YEARWEEK(CURDATE(), 1) and biller_id='".$biller_id."' and bill_pay_status=1  group by bill_invoice_date";
